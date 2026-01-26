@@ -1,5 +1,9 @@
 ---
 description: Chuyển đổi yêu cầu thành các thiết kế UI/UX toàn diện.
+type: procedure
+required_skills: [designer, frontend-developer]
+inputs: ["User Stories", "PRD"]
+outputs: ["Design System", "Flows", "Prototypes"]
 ---
 
 # Workflow Thiết kế UI/UX (`/ui-ux-design`)

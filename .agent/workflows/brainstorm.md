@@ -1,5 +1,9 @@
 ---
 description: Phân tích ý tưởng cùng user và tạo các tài liệu sơ bộ mức cao (Roadmap, PRD).
+type: procedure
+required_skills: [research, product-manager]
+inputs: ["User Idea", "Market Trends"]
+outputs: ["docs/010-Planning/Roadmap-*.md", "docs/020-Requirements/PRD-*.md"]
 ---
 
 # Workflow Brainstorm

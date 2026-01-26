@@ -1,5 +1,9 @@
 ---
 description: Workflow để tùy chỉnh Rule/Workflow an toàn, có phân tích tác động và xác nhận của user.
+type: procedure
+required_skills: [rules-workflows]
+inputs: ["User Requirement", "Existing Rules"]
+outputs: ["Updated Rule/Workflow"]
 ---
 
 # Workflow Tùy chỉnh Hành vi (Custom Behavior)

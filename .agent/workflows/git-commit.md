@@ -1,6 +1,11 @@
 ---
 description: Commit code đúng chuẩn Conventional Commits (Tiếng Việt).
+type: procedure
+required_skills: []
+inputs: ["Staged Files"]
+outputs: ["Git Commit"]
 ---
+
 # Workflow Commit Code (`/git-commit`)
 
 > [!IMPORTANT]

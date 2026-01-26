@@ -1,5 +1,9 @@
 ---
 description: Workflow debug khoa học: Giả thuyết, Đo đạc, Tái hiện, Phân tích, Fix.
+type: procedure
+required_skills: [qa-tester, backend-developer, frontend-developer]
+inputs: ["Bug Report", "Logs"]
+outputs: ["Proof of Fix", "Regression Test"]
 ---
 
 # Workflow Debug & Fix Khoa học

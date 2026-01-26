@@ -1,5 +1,9 @@
 ---
 description: Điều phối việc chia nhỏ yêu cầu thành các task khả thi để triển khai.
+type: procedure
+required_skills: [business-analysis, lead-architect]
+inputs: ["PRD", "User Stories", "SDD"]
+outputs: ["docs/050-Tasks/Task-*.md", "task.md"]
 ---
 
 # Workflow Chia nhỏ Task (`/break-tasks`)

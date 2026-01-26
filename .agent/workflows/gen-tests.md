@@ -1,5 +1,9 @@
 ---
 description: Tạo unit, E2E, security, và performance tests sử dụng qa-tester skill.
+type: procedure
+required_skills: [qa-tester]
+inputs: ["Source Code", "Docs"]
+outputs: ["Test Plan", "Test Cases", "Test Code"]
 ---
 
 # Workflow Sinh Test (`/gen-tests`)

@@ -1,41 +1,33 @@
 ---
 description: Tạo Pull Request (PR) và Merge.
+type: procedure
+required_skills: []
+inputs: ["Current Branch"]
+outputs: ["Pull Request URL"]
 ---
-# Workflow Pull Request (`/git-pr`)
+
+# Workflow Tạo PR (`/git-pr`)
 
 > [!IMPORTANT]
-> **Atomic Workflow**: Chỉ thực hiện thao tác Push và tạo PR.
+> **Atomic Workflow**: Đẩy code và tạo PR.
 
 ## Các bước thực hiện
 
-1.  **Review Diff (BẮT BUỘC)**:
-    - Kiểm tra những thay đổi sẽ được đẩy lên so với nhánh `dev`.
+1.  **Push Branch**:
     ```bash
-    git diff origin/dev...HEAD
-    ```
-    - *Gợi ý*: Nhấn `q` để thoát khỏi màn hình diff.
-
-2.  **Push Branch hiện tại**:
-    ```bash
-    git push origin HEAD
-    ```
-    *(Hoặc `git push origin feature/ten-branch` nếu cần chỉ định rõ)*
-
-2.  **Tạo PR (Sử dụng GitHub CLI)**:
-    - Target: `dev` (Mặc định).
-    - Title: Tiếng Việt, ngắn gọn.
-    - Body: Mô tả thay đổi.
-    
-    ```bash
-    gh pr create --base dev --title "feat: tiêu đề PR" --body "- Chi tiết thay đổi 1\n- Chi tiết thay đổi 2"
+    git push origin <current-branch>
     ```
 
-3.  **Merge PR (Optional - Nếu workflow yêu cầu merge ngay)**:
+2.  **Tạo PR bằng GH CLI**:
     ```bash
-    gh pr merge --merge --delete-branch
+    gh pr create --base dev --title "feat: ..." --body "Mô tả thay đổi..."
     ```
+    *(Hoặc hướng dẫn user mở link Github để tạo PR)*
+
+3.  **Merge (Nếu được approve)**:
+    - Không tự merge nếu không có quyền.
+    - Nhắc user review và merge.
 
 ## Checklist
-- [ ] Đã review lại code diff chưa?
-- [ ] Title/Body PR có viết bằng Tiếng Việt không?
-- [ ] Đã target vào branch `dev` chưa?
+- [ ] Đã push hết commit chưa?
+- [ ] Title PR có theo chuẩn Conventional Commits không?

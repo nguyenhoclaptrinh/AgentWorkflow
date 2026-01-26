@@ -1,5 +1,9 @@
 ---
 description: Điều phối việc triển khai tính năng từ đặc tả đến khi hoàn thành.
+type: procedure
+required_skills: [research, product-manager, lead-architect, backend-developer, frontend-developer, qa-tester]
+inputs: ["docs/020-Requirements/PRD-*.md"]
+outputs: ["Source Code", "QA Report", "Updated Specs"]
 ---
 
 # Quy trình Triển khai Tính năng (`/implement-feature`)
@@ -27,7 +31,7 @@ description: Điều phối việc triển khai tính năng từ đặc tả đ�
 
 > 💡 **BẮT BUỘC**: Tuân thủ `.agent/rules/research.md` để đảm bảo tính năng hiện đại.
 
-1.  **Gọi `[research]`** để:
+1.  **Adopt `[researcher]` persona** để:
     -   Tìm các pattern hiệu quả/hiện đại nhất cho tính năng yêu cầu.
     -   Kiểm tra cập nhật mới nhất của các thư viện (Next.js, Prisma...).
     -   Xác định vấn đề scaling hoặc bảo mật tiềm ẩn.
@@ -40,7 +44,7 @@ description: Điều phối việc triển khai tính năng từ đặc tả đ�
 
 **Bỏ qua nếu**: Đã có User Stories hoặc Specs trong `docs/`.
 
-1.  **Gọi `[product-manager]` skill** để làm rõ yêu cầu.
+1.  **Adopt `[product-manager]` persona** để làm rõ yêu cầu.
 2.  Tạo artifact `feature-spec.md` gồm: Goal, User, Acceptance Criteria.
 3.  **CHỜ** user xác nhận.
 
@@ -51,7 +55,7 @@ description: Điều phối việc triển khai tính năng từ đặc tả đ�
 // turbo
 
 1.  Tìm kiếm trong `docs/` các tài liệu liên quan: User Stories, SDD, Designs.
-2.  **Gọi `[lead-architect]` skill** để xác định phạm vi và dependencies.
+2.  **Adopt `[lead-architect]` persona** để xác định phạm vi và dependencies.
 3.  Liệt kê các file cần tạo/sửa.
 4.  **CHỜ** user xác nhận phạm vi.
 
@@ -61,7 +65,7 @@ description: Điều phối việc triển khai tính năng từ đặc tả đ�
 
 // turbo
 
-1.  **Gọi `[lead-architect]` skill** để chia nhỏ task.
+1.  **Adopt `[lead-architect]` persona** để chia nhỏ task.
 2.  Tạo artifact `implementation-plan.md` với các task theo giai đoạn.
 3.  Lưu vào `docs/050-Tasks/Task-{FeatureName}.md` sau khi approve.
 4.  **CHỜ** user approve.
@@ -80,7 +84,7 @@ description: Điều phối việc triển khai tính năng từ đặc tả đ�
 
 // turbo
 
-1.  **Gọi `[backend-developer]` skill** để:
+1.  **Adopt `[backend-developer]` persona** để:
     -   Data models/migrations.
     -   API endpoints/server functions.
     -   Unit tests (TDD).
@@ -94,7 +98,7 @@ description: Điều phối việc triển khai tính năng từ đặc tả đ�
 
 // turbo
 
-1.  **Gọi `[frontend-developer]` skill** để:
+1.  **Adopt `[frontend-developer]` persona** để:
     -   Components theo design specs.
     -   State management.
     -   Component tests.
@@ -107,7 +111,7 @@ description: Điều phối việc triển khai tính năng từ đặc tả đ�
 
 // turbo
 
-1.  **Gọi `[qa-tester]` skill** để:
+1.  **Adopt `[qa-tester]` persona** để:
     -   Chạy E2E test.
     -   Verify Acceptance Criteria.
     -   Test Edge case.
@@ -120,7 +124,7 @@ description: Điều phối việc triển khai tính năng từ đặc tả đ�
 
 // turbo
 
-1.  **Gọi `[lead-architect]` skill** để:
+1.  **Adopt `[lead-architect]` persona** để:
     -   Cập nhật các file MOC.
     -   Di chuyển task vào `docs/050-Tasks/Completed/`.
     -   Update API/changelog nếu cần.

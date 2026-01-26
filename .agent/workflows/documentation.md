@@ -1,5 +1,9 @@
 ---
 description: Tạo tài liệu toàn diện (Kiến trúc, API, Specs) từ Codebase hoặc Requirements.
+type: procedure
+required_skills: [lead-architect, backend-developer, devops-engineer, business-analysis]
+inputs: ["Source Code", "PRD"]
+outputs: ["docs/030-Specs/*"]
 ---
 
 # Workflow Tài liệu (`/documentation`)

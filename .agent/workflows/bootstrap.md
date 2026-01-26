@@ -1,5 +1,9 @@
 ---
 description: Thiết lập cấu trúc dự án, cài đặt dependencies, và cấu hình môi trường dựa trên spec kiến trúc.
+type: procedure
+required_skills: [lead-architect, devops-engineer, frontend-developer, backend-developer, product-manager]
+inputs: ["docs/030-Specs/Architecture/SDD-*.md"]
+outputs: ["Initialized Project", "CI/CD Config", "Env Config"]
 ---
 
 # Workflow Khởi tạo Dự án (Bootstrap)

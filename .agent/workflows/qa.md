@@ -1,5 +1,9 @@
 ---
 description: Tạo tài liệu test case và test plan toàn diện dựa trên yêu cầu dự án.
+type: procedure
+required_skills: [qa-tester]
+inputs: ["Requirements Docs", "Source Code"]
+outputs: ["Test Plan", "Test Cases"]
 ---
 
 # Workflow QA (`/qa`)

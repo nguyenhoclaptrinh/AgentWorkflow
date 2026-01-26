@@ -1,5 +1,9 @@
 ---
 description: Workflow coding cơ bản để thực hiện thay đổi, sửa lỗi hoặc tính năng nhỏ.
+type: procedure
+required_skills: [backend-developer, frontend-developer]
+inputs: ["Bug Report", "Small Task"]
+outputs: ["Committed Code"]
 ---
 
 # Quy trình Phát triển (`/development`)
