@@ -13,6 +13,12 @@ outputs: ["Pull Request URL"]
 
 ## Các bước thực hiện
 
+0.  **Check Auth**:
+    ```bash
+    gh auth status
+    ```
+    *(Nếu chưa login, dùng `gh auth login` hoặc tạo PR thủ công)*
+
 1.  **Push Branch**:
     ```bash
     git push origin <current-branch>

@@ -13,11 +13,14 @@ outputs: ["New Git Branch"]
 
 ## Các bước thực hiện
 
-1.  **Checkout về dev & Pull mới nhất**:
+1.  **Kiểm tra & Cập nhật**:
     ```bash
+    git status # Check dirty!
     git checkout dev
     git pull origin dev
     ```
+    > [!WARNING]
+    > Nếu `git status` báo có file thay đổi, hãy Stash hoặc Commit trước khi switch branch!
 
 2.  **Đặt tên Branch**:
     - **Quy tắc**: `type/short-description`

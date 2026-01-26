@@ -6,12 +6,12 @@ Tài liệu này tổng hợp và hướng dẫn sử dụng các quy trình là
 
 Hệ thống Workflow được chia làm 2 loại chính:
 
-1.  **Orchestrator (Người điều phối)**: Là các workflow cấp cao, quản lý vòng đời phát triển và điều phối các sub-agents.
-    -   Ví dụ: `/code`, `/cook`.
+1.  **Direct Executor (Người thực thi trực tiếp)**: Là các workflow cấp cao, nơi AI tự thực hiện toàn bộ vòng đời phát triển (Research -> Code -> Test) mà không cần giao việc cho agent khác.
+    -   Ví dụ: `/code` (Tự động), `/cook` (Tương tác).
 2.  **Procedure (Quy trình thực thi)**: Là các quy trình cụ thể, atomic, tập trung vào một nhiệm vụ duy nhất.
     -   Ví dụ: `/git-commit`, `/implement-feature`, `/hotfix`.
 
-**Skill Binding**: Mỗi workflow đều được gắn metadata `required_skills` (VD: `qa-tester`, `lead-architect`) giúp Agent biết chính xác cần đóng vai trò gì để thực thi.
+**Persona Binding**: Mỗi workflow đều được gắn metadata `required_skills` giúp AI biết cần **đóng vai trò (Persona)** gì (VD: `qa-tester`, `lead-architect`) để thực thi nhiệm vụ tốt nhất.
 
 ---
 
@@ -19,51 +19,52 @@ Hệ thống Workflow được chia làm 2 loại chính:
 
 Các workflow atomic tương tác với Git.
 
-| Workflow | Lệnh gọi | Mô tả |
-| :--- | :--- | :--- |
-| **Tạo Branch** | `/git-branch` | Tạo branch mới từ `dev`. |
-| **Commit Code** | `/git-commit` | Stage & Commit với message chuẩn Conventional Commits (Tiếng Việt). |
-| **Tạo PR** | `/git-pr` | Đẩy code và tạo Pull Request. |
+| Workflow | Lệnh gọi | Mô tả | Ví dụ |
+| :--- | :--- | :--- | :--- |
+| **Cập nhật Code** | `/git-sync` | **MỚI**: Kéo code từ `dev`, rebase và xử lý conflict an toàn. | `git-sync` (trước khi start task) |
+| **Tạo Branch** | `/git-branch` | Tạo branch mới (Có kiểm tra Dirty workspace). | `feature/login-page` |
+| **Commit Code** | `/git-commit` | Commit chuẩn Conventional Commits (Có Self-Review). | `feat: thêm nút đăng nhập` |
+| **Tạo PR** | `/git-pr` | Tạo PR (Có kiểm tra Auth GitHub CLI). | PR: Login Feature |
 
 ---
 
 ## 3. Development Workflows
 
 ### A. Core Development
-| Workflow | Loại | Mô tả |
-| :--- | :--- | :--- |
-| `/development` | Procedure | Code task nhỏ, bug fix, thay đổi đơn giản. |
-| `/implement-feature` | Procedure | Triển khai tính năng trọn gói (Research -> Plan -> Code -> Test). |
-| `/code` | Orchestrator | Engine điều phối, tự động chạy plan cho `implement-feature`. |
-| `/cook` | Orchestrator | Engine điều phối bước-theo-bước (interactive). |
+| Workflow | Loại | Mô tả | Ví dụ |
+| :--- | :--- | :--- | :--- |
+| `/development` | Procedure | Code task nhỏ, bug fix, thay đổi đơn giản. | "Sửa lỗi typo", "Đổi màu button" |
+| `/implement-feature` | Procedure | Triển khai tính năng trọn gói (Research -> Plan -> Code -> Test). | "Thêm module Thanh toán VNPAY" |
+| `/code` | Direct Executor | Engine thực thi trọn gói, tự động chạy plan (Atomic AI). | "Refactor thư mục `utils`", "Viết test coverage 80%" |
+| `/cook` | Interactive | Engine thực thi từng bước, cộng tác chặt chẽ với User. | "Cùng debug lỗi render React", "Hướng dẫn setup ENV" |
 
 ### B. Maintenance & Refactoring (Mới)
-| Workflow | Loại | Mô tả |
-| :--- | :--- | :--- |
-| `/hotfix` | Procedure | **Quy trình khẩn cấp**: Sửa lỗi Production, bypass research sâu, merge thẳng vào Main & Dev. |
-| `/refactor` | Procedure | Chuyên dụng cho việc dọn dẹp code, không thay đổi logic, đảm bảo test pass. |
+| Workflow | Loại | Mô tả | Ví dụ |
+| :--- | :--- | :--- | :--- |
+| `/hotfix` | Procedure | **Quy trình khẩn cấp**: Sửa lỗi Production, bypass research sâu, merge thẳng vào Main & Dev. | "Sửa gấp lỗi 500 khi checkout" |
+| `/refactor` | Procedure | Chuyên dụng cho việc dọn dẹp code, không thay đổi logic, đảm bảo test pass. | "Tách hàm xử lý date ra file riêng" |
 
 ---
 
 ## 4. Planning & Analysis Workflows
 
-| Workflow | Input | Output |
-| :--- | :--- | :--- |
-| `/brainstorm` | Ý tưởng (Idea) | Roadmap, PRD |
-| `/break-tasks` | PRD/Specs | Danh sách Task (Jira/Markdown) |
-| `/bootstrap` | Architecture Spec | Project Init, Config |
+| Workflow | Input | Output | Ví dụ |
+| :--- | :--- | :--- | :--- |
+| `/brainstorm` | Ý tưởng (Idea) | Roadmap, PRD | "Lên ý tưởng cho App nuôi heo" |
+| `/break-tasks` | PRD/Specs | Danh sách Task (Jira/Markdown) | "Chia nhỏ PRD module Kho thành task" |
+| `/bootstrap` | Architecture Spec | Project Init, Config | "Khởi tạo dự án Next.js + NestJS" |
 
 ---
 
 ## 5. QA & Documentation Workflows
 
-| Workflow | Skill chính | Mô tả |
-| :--- | :--- | :--- |
-| `/qa` | `qa-tester` | Lên kế hoạch test (Test Plans) và viết Test Cases. |
-| `/gen-tests` | `qa-tester` | Sinh code test tự động (Unit/E2E). |
-| `/debug` | `tester`, `coder` | Quy trình debug khoa học (Giả thuyết -> Chứng minh -> Fix). |
-| `/documentation` | `architect` | Dịch ngược code ra tài liệu hoặc viết Specs từ PRD. |
-| `/ui-ux-design` | `designer` | Quy trình thiết kế, prototyping. |
+| Workflow | Vai trò (Persona) | Mô tả | Ví dụ |
+| :--- | :--- | :--- | :--- |
+| `/qa` | `qa-tester` | Lên kế hoạch test (Test Plans) và viết Test Cases. | "Lập Test Plan cho màn hình Login" |
+| `/gen-tests` | `qa-tester` | Sinh code test tự động (Unit/E2E). | "Tạo unit test cho `AuthService`" |
+| `/debug` | `tester`, `coder` | Quy trình debug khoa học (Giả thuyết -> Chứng minh -> Fix). | "Tìm nguyên nhân lỗi không lưu session" |
+| `/documentation` | `architect` | Dịch ngược code ra tài liệu hoặc viết Specs từ PRD. | "Tạo API Doc cho `ProductController`" |
+| `/ui-ux-design` | `designer` | Quy trình thiết kế, prototyping. | "Thiết kế UI Dashboard Admin" |
 
 ---
 
@@ -72,3 +73,35 @@ Các workflow atomic tương tác với Git.
 ### `/custom-behavior`
 - **Mục đích**: Hỗ trợ user điều chỉnh Rules hoặc Workflows một cách an toàn.
 - **Tính năng**: Tự động phân tích tác động (Impact Analysis) trước khi ghi đè file hệ thống.
+
+---
+
+## 7. Utility Workflows & Q&A
+
+| Workflow | Input | Mô tả | Ví dụ |
+| :--- | :--- | :--- | :--- |
+| `/ask` | Câu hỏi | Hỏi đáp về Codebase/Kiến trúc. Không sửa code. Gợi ý workflow tiếp theo. | "Code flow của hàm `checkout` là gì?" |
+
+---
+
+## 8. Chiến lược Phát triển (Strategy Guide)
+
+> [!IMPORTANT]
+> **Checklist Trước khi Tác chiến**:
+> 1. Kiểm tra `.agent/rules/` chưa?
+> 2. Đã chạy Test chưa?
+
+### Khi nào dùng Workflow nào? (Decision Matrix)
+
+| Tình huống (Scenario) | Workflow | Chiến lược | Ví dụ thực tế |
+| :--- | :--- | :--- | :--- |
+| **Tôi có câu hỏi / Tôi không hiểu code** | `/ask` | **Research First**: Dùng AI để hiểu rõ trước khi hành động. | "Tại sao hàm `login` lại trả về 403?", "Giải thích architecture của module `Auth`." |
+| **Fix bug nhỏ / Refactor / Task đơn giản** | `/development` | **Atomic Flow**: AI tự làm trọn gói (Code -> Test -> Verify). | "Sửa lỗi null pointer ở dòng 50 file `auth.service.ts`", "Đổi tên biến `user` thành `currentUser`." |
+| **Tính năng mới / Logic phức tạp** | `/implement-feature` | **Full Flow**: Chia nhỏ task. User Review sau mỗi phase. | "Thêm tính năng đăng nhập bằng Google (OAuth2)", "Tạo API report doanh thu hàng tháng." |
+| **Dự án con / Module lớn** | `/code` | **Direct Execution**: AI đóng vai trò Lead Dev, tự lên plan và thực thi. | "Migrate toàn bộ module `User` sang GraphQL", "Viết unit test cho toàn bộ `PaymentService`." |
+| **Cần làm việc từng bước cùng AI** | `/cook` | **Interactive**: Cặp đôi hoàn hảo (Pair Programming). | "Hướng dẫn tôi setup môi trường dev mới", "Cùng tôi debug lỗi deadlock này." |
+
+### Nguyên tắc Vàng
+1.  **Atomic AI Flow (Task Nhỏ)**: Tin tưởng AI, nhưng luôn kiểm tra kết quả cuối cùng.
+2.  **User Full Flow (Task Lớn)**: Đừng để AI đi quá xa mà không kiểm soát. Dùng các "Gate" (Review) để điều chỉnh hướng đi.
+

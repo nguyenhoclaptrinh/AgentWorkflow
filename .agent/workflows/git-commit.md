@@ -18,9 +18,11 @@ outputs: ["Git Commit"]
     git status
     ```
 
-2.  **Stage Files (Add)**:
-    - Add toàn bộ: `git add .`
-    - Add file cụ thể: `git add <path/to/file>`
+2.  **Stage & Review**:
+    ```bash
+    git add .
+    git diff --staged # REVIEW KỸ TRƯỚC KHI COMMIT!
+    ```
 
 3.  **Commit**:
     - **BẮT BUỘC**: Dùng Tiếng Việt.
