@@ -30,12 +30,12 @@ outputs: ["docs/010-Planning/Roadmap-*.md", "docs/020-Requirements/PRD-*.md"]
 
 > 💡 **BẮT BUỘC**: Tuân thủ `.agent/rules/research.md` trước khi bắt đầu lên ý tưởng.
 
-1.  **Gọi `[research]`** (via `search_web` + `read_url_content`) để:
+1.  **Adopt `[research]` persona** (via `search_web` + `read_url_content`) để:
     -   Xác định 5-10 xu hướng chính trong domain dự án.
     -   Tìm các ví dụ "best-in-class" của sản phẩm tương tự.
     -   Nhận diện các cạm bẫy phổ biến và "Wow Factors" hiện đại.
 2.  Tạo artifact `research-insights.md` trong `docs/050-Research/`.
-3.  **CHỜ** user review kết quả nghiên cứu.
+3.  **Action**: Gọi `notify_user` để user review kết quả nghiên cứu.
 
 ---
 
@@ -57,11 +57,11 @@ Priority 1: PRD           ← Tổng quan Chiến lược
 
 > 💡 **MCP**: Sử dụng `sequential-thinking` để phân tích các yêu cầu mơ hồ hoặc phức tạp.
 
-1.  **Gọi `[product-manager]` skill** để:
+1.  **Adopt `[product-manager]` persona** để:
     -   Tóm tắt mức độ hiểu.
     -   Tạo câu hỏi làm rõ (clarification questions).
 2.  Tạo artifact `clarification-questions.md`.
-3.  **CHỜ** user review và xác nhận.
+3.  **Action**: Gọi `notify_user` để user review.
 
 ---
 
@@ -71,13 +71,13 @@ Priority 1: PRD           ← Tổng quan Chiến lược
 
 > 💡 **MCP**: Sử dụng `sequential-thinking` cho việc lên kế hoạch theo giai đoạn và đánh giá rủi ro.
 
-1.  **Gọi `[product-manager]` skill** để soạn thảo:
+1.  **Adopt `[product-manager]` persona** để soạn thảo:
     -   Timeline dự án và các cột mốc (milestones).
     -   Phân chia giai đoạn (MVP, v1.0, v2.0).
     -   Các deliverables chính theo từng giai đoạn.
 2.  Tạo artifact `draft-roadmap.md`.
 3.  Sau khi approve → Lưu vào `docs/010-Planning/Roadmap-{ProjectName}.md`.
-4.  **CHỜ** phản hồi của user.
+4.  **Action**: Gọi `notify_user` để user phản hồi.
 
 ---
 
@@ -85,13 +85,13 @@ Priority 1: PRD           ← Tổng quan Chiến lược
 
 // turbo
 
-1.  **Gọi `[product-manager]` skill** để soạn thảo:
+1.  **Adopt `[product-manager]` persona** để soạn thảo:
     -   Mục tiêu kinh doanh và chỉ số thành công.
     -   Đối tượng mục tiêu/User personas.
     -   Độ ưu tiên tính năng (MoSCoW).
 2.  Tạo artifact `draft-prd.md`.
 3.  Sau khi approve → Lưu vào `docs/020-Requirements/PRD-{ProjectName}.md`.
-4.  **CHỜ** phản hồi của user.
+4.  **Action**: Gọi `notify_user` để user phản hồi.
 
 ---
 

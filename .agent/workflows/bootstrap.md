@@ -26,11 +26,11 @@ outputs: ["Initialized Project", "CI/CD Config", "Env Config"]
 
 // turbo
 
-1.  **Gọi `[lead-architect]` skill** để:
+1.  **Adopt `[lead-architect]` persona** để:
     -   Định nghĩa cấu trúc root (Monorepo vs Polyrepo).
     -   Khởi tạo base project (VD: `git init`, `npx create-next-app`).
     -   Tạo khung thư mục dựa trên SDD.
-2.  **CHỜ** quá trình khởi tạo hoàn tất.
+2.  **Verify**: Đảm bảo quá trình khởi tạo hoàn tất.
 
 ---
 
@@ -40,7 +40,7 @@ outputs: ["Initialized Project", "CI/CD Config", "Env Config"]
 
 > 💡 **Vai trò**: DevOps Engineer đảm bảo "Trải nghiệm Phát triển" (DX) tốt.
 
-1.  **Gọi `[devops-engineer]` skill** để cài đặt & cấu hình:
+1.  **Adopt `[devops-engineer]` persona** để cài đặt & cấu hình:
     -   **Quality Tools**: ESLint, Prettier, TypeScript config.
     -   **Git Hooks**: Husky, Lint-staged, Commitlint.
     -   **CI/CD**: Github Actions (build/test cơ bản).
@@ -54,12 +54,12 @@ outputs: ["Initialized Project", "CI/CD Config", "Env Config"]
 
 > 💡 **Vai trò**: Frontend Developer quản lý phía UI/Client.
 
-1.  **Gọi `[frontend-developer]` skill** để:
+1.  **Adopt `[frontend-developer]` persona** để:
     -   **UI Ecosystem**: Cài đặt TailwindCSS, Radix/Shadcn, Framer Motion.
     -   **State Manager**: Zustand/Jotai/Redux.
     -   **Structure**: Setup `src/components`, `src/hooks`, `src/pages` (hoặc `app`).
     -   **Assets**: Cấu hình font loaders, image optimization.
-2.  **CHỜ** quá trình cài đặt.
+2.  **Verify**: Đảm bảo các thư viện đã được thêm vào `package.json`.
 
 ---
 
@@ -69,12 +69,12 @@ outputs: ["Initialized Project", "CI/CD Config", "Env Config"]
 
 > 💡 **Vai trò**: Backend Developer quản lý phía Data/Server.
 
-1.  **Gọi `[backend-developer]` skill** để:
+1.  **Adopt `[backend-developer]` persona** để:
     -   **Database**: Setup Prisma/Drizzle/Supabase client.
     -   **API**: Cấu hình API routes/Server Actions.
     -   **Validation**: Cài đặt Zod/Valibot.
     -   **Environment**: Tạo `.env.example` và validate `.env` keys.
-2.  **CHỜ** quá trình cài đặt.
+2.  **Verify**: Đảm bảo kết nối database thành công (nếu có thể).
 
 ---
 
@@ -82,10 +82,10 @@ outputs: ["Initialized Project", "CI/CD Config", "Env Config"]
 
 // turbo
 
-1.  **Gọi `[devops-engineer]` skill** để:
+1.  **Adopt `[devops-engineer]` persona** để:
     -   Chạy full build `npm run build`.
     -   Test Type-checking `tsc --noEmit`.
-2.  **Gọi `[product-manager]`** để cập nhật trạng thái Roadmap sang "In Progress".
+2.  **Adopt `[product-manager]` persona** để cập nhật trạng thái Roadmap sang "In Progress".
 
 ---
 

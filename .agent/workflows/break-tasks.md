@@ -37,13 +37,13 @@ outputs: ["docs/050-Tasks/Task-*.md", "task.md"]
 
 // turbo
 
-1.  **Gọi `[business-analysis]` skill** để trích xuất các tính năng chính và acceptance criteria.
+1.  **Adopt `[business-analysis]` persona** để trích xuất các tính năng chính và acceptance criteria.
 2.  Sử dụng `sequential-thinking` để:
     -   Nhận diện các phụ thuộc kỹ thuật (dependencies).
     -   Tách biệt yêu cầu backend, frontend, và QA.
     -   Phát hiện các chi tiết mơ hồ hoặc thiếu sót.
 3.  Liệt kê các câu hỏi cần làm rõ cho user.
-4.  **CHỜ** user giải đáp nếu cần.
+4.  **Action**: Gọi `notify_user` nếu cần giải đáp.
 
 ---
 
@@ -53,7 +53,7 @@ outputs: ["docs/050-Tasks/Task-*.md", "task.md"]
 
 > 💡 **MCP**: **PHẢI** dùng `sequential-thinking` ở đây để đảm bảo task nhỏ và dễ quản lý (atomic).
 
-1.  **Gọi `[lead-architect]` skill** để tạo danh sách task có cấu trúc.
+1.  **Adopt `[lead-architect]` persona** để tạo danh sách task có cấu trúc.
 2.  Nhóm task theo component hoặc giai đoạn (VD: Database, API, Logic, UI, Testing).
 3.  Với mỗi task, bao gồm:
     -   Mục tiêu/Mô tả.
