@@ -9,7 +9,8 @@ outputs: ["Test Plan", "Test Cases", "Test Code"]
 # Workflow Sinh Test (`/gen-tests`)
 
 > [!IMPORTANT]
-> **BẮT BUỘC**: Áp dụng `.agent/rules/documents.md` cho mọi việc tạo tài liệu và cấu trúc thư mục. Mọi tài liệu QA PHẢI được lưu dưới `docs/035-QA/`.
+> **BẮT BUỘC**: Áp dụng `.agent/rules/documents.md` cho mọi việc tạo tài liệu và cấu trúc thư mục.
+> **OUTPUT**: Test code phải chạy được (Green).
 
 ---
 
@@ -17,13 +18,10 @@ outputs: ["Test Plan", "Test Cases", "Test Code"]
 
 // turbo
 
-1.  **Gọi `[qa-tester]` skill** để phân tích folder `docs/` và cấu trúc codebase hiện tại.
-2.  Hỏi user loại test họ muốn sinh ra:
-    -   **Unit Tests**: Cho hàm hoặc utility cụ thể (VD: `tests/unit/`).
-    -   **E2E Tests**: Cho luồng người dùng (VD: `tests/e2e/`).
-    -   **Security Tests**: Đánh giá lỗ hổng bảo mật.
-    -   **Performance Tests**: Kiểm tra tải và độ phản hồi.
-3.  Xác định file hoặc tính năng cụ thể cần test dựa trên input của user.
+1.  **Adopt `[qa-tester]` persona** để phân tích:
+    -   Folder `docs/` và cấu trúc codebase.
+    -   Xác định loại test cần sinh (Unit, E2E, Security, Performance).
+2.  Xác định file/tính năng cụ thể cần test.
 
 ---
 
@@ -31,32 +29,36 @@ outputs: ["Test Plan", "Test Cases", "Test Code"]
 
 // turbo
 
-1.  **Gọi `[qa-tester]` skill** để tạo/cập nhật Test Plan và Test Cases:
-    -   Với **Unit Tests**: Nhận diện edge cases, điều kiện biên, và happy paths.
-    -   Với **E2E Tests**: luồng hợp lệ/không hợp lệ.
-    -   Với **Security**: điểm injection tiềm năng, lỗi auth.
-2.  Tạo tài liệu test trong `docs/035-QA/Test-Cases/` theo chuẩn tên `TC-{Feature}-{NNN}.md`.
-3.  Tạo artifact `draft-test-docs.md` với các test case đề xuất để review.
+1.  **Adopt `[qa-tester]` persona** để tạo Test Plan/Cases:
+    -   Nhận diện edge cases, boundary conditions.
+    -   Lưu vào `docs/035-QA/Test-Cases/TC-{Feature}-{NNN}.md`.
+2.  **Verify**: Đảm bảo test case bao phủ đủ yêu cầu (Acceptance Criteria).
 
 ---
 
 ## Bước 3: Sinh Code Test
 
-1.  **Chờ** user approve các test case.
-2.  **Gọi `[qa-tester]` skill** để sinh code test thực tế.
-    -   Sử dụng framework test hiện có của dự án (VD: Jest, Playwright, Vitest).
-    -   Đảm bảo mocks và stubs được triển khai đúng cho unit tests.
-    -   Đảm bảo selectors và các bước tương tác ổn định cho E2E tests.
-3.  Lưu code test đã sinh vào thư mục phù hợp (VD: `tests/unit/`, `tests/e2e/`).
+// turbo
+
+1.  **Adopt `[qa-tester]` persona** để sinh code:
+    -   Sử dụng framework test hiện có (Jest/Vitest/Playwright).
+    -   Tạo file test tương ứng (VD: `__tests__/auth.test.ts`).
+    -   **QUAN TRỌNG**: Mock đầy đủ các dependencies. Không để test unit phụ thuộc DB thật.
 
 ---
 
-## Bước 4: Verification & Báo cáo
+## Bước 4: Validation & Fix-Loop
 
-1.  Chạy các test vừa tạo bằng test runner của dự án.
-2.  Nếu test fail:
-    -   Phân tích lỗi.
-    -   **Gọi `[qa-tester]` skill** để sửa code test hoặc báo bug nếu là lỗi thật.
-3.  **Bắt buộc**:
-    -   Cập nhật `docs/035-QA/QA-MOC.md`.
-    -   Cập nhật `docs/000-Index.md` nếu cần.
+// turbo
+
+1.  **Auto-Run**:
+    ```bash
+    npm test path/to/new-test-file
+    ```
+2.  **Self-healing**:
+    -   Nếu Fail -> Đọc lỗi -> Sửa code test -> Chạy lại.
+    -   Lặp lại tối đa 3 lần.
+
+3.  **Final Report**:
+    -   Nếu Pass: Commit code.
+    -   Nếu Fail: Báo cáo bug (hoặc lỗi workflow) cho user.

@@ -63,7 +63,7 @@ Các workflow atomic tương tác với Git.
 | Workflow | Vai trò (Persona) | Mô tả | Ví dụ |
 | :--- | :--- | :--- | :--- |
 | `/qa` | `qa-tester` | Lên kế hoạch test (Test Plans) và viết Test Cases. | "Lập Test Plan cho màn hình Login" |
-| `/gen-tests` | `qa-tester` | Sinh code test tự động (Unit/E2E). | "Tạo unit test cho `AuthService`" |
+| `/gen-tests` | `qa-tester` | Sinh code test tự động (Unit/E2E). **Có Auto-Run & Self-Healing.** | "Tạo unit test cho `AuthService`" |
 | `/debug` | `tester`, `coder` | Quy trình debug khoa học (Giả thuyết -> Chứng minh -> Fix). | "Tìm nguyên nhân lỗi không lưu session" |
 | `/documentation` | `architect` | Dịch ngược code ra tài liệu hoặc viết Specs từ PRD. | "Tạo API Doc cho `ProductController`" |
 | `/ui-ux-design` | `designer` | Quy trình thiết kế, prototyping. | "Thiết kế UI Dashboard Admin" |
