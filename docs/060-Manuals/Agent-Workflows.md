@@ -70,7 +70,16 @@ Các workflow atomic tương tác với Git.
 
 ---
 
-## 6. Customization
+## 6. Review & Audit Workflows (Mới)
+
+| Workflow | Input | Output | Ví dụ |
+| :--- | :--- | :--- | :--- |
+| `/code-review` | Diff/Branch | Review Comments | "Review PR login fix xem có lỗi gì không" |
+| `/project-review` | Codebase | Audit Report | "Đánh giá lại toàn bộ kiến trúc và bảo mật" |
+
+---
+
+## 7. Customization
 
 ### `/custom-behavior`
 - **Mục đích**: Hỗ trợ user điều chỉnh Rules hoặc Workflows một cách an toàn.
@@ -78,7 +87,7 @@ Các workflow atomic tương tác với Git.
 
 ---
 
-## 7. Utility Workflows & Q&A
+## 8. Utility Workflows & Q&A
 
 | Workflow | Input | Mô tả | Ví dụ |
 | :--- | :--- | :--- | :--- |
@@ -86,7 +95,7 @@ Các workflow atomic tương tác với Git.
 
 ---
 
-## 8. Chiến lược Phát triển (Strategy Guide)
+## 9. Chiến lược Phát triển (Strategy Guide)
 
 > [!IMPORTANT]
 > **Checklist Trước khi Tác chiến**:
