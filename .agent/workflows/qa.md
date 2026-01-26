@@ -26,24 +26,10 @@ outputs: ["Test Plan", "Test Cases"]
 
 // turbo
 
-1.  **Gọi `[qa-tester]` skill** để phân tích folder `docs/`.
-2.  Nhận diện tính năng, ràng buộc và business logic cần test.
-3.  Lên bản đồ:
-    -   Happy Paths (Golden Flows)
-    -   Negative Paths (Xử lý lỗi)
-    -   Boundary Cases
-    -   Cân nhắc về Security/Performance
-4.  **CHỜ** user xác nhận danh sách kịch bản (scenarios) cần làm tài liệu.
-
----
-
-## Bước 2: Soạn thảo Tài liệu Test
-
-// turbo
-
-1.  **Gọi `[qa-tester]` skill** để tạo:
-    -   **Test Plan**: Chiến lược mức cao cho release/feature hiện tại (`docs/035-QA/Test-Plans/`).
-    -   **Test Cases**: Chi tiết từng bước (`docs/035-QA/Test-Cases/`).
+1.  **Adopt `[qa-tester]` persona** để:
+    -   Phân tích folder `docs/`.
+    -   Đề xuất Test Plan (`docs/035-QA/Test-Plans/`).
+    -   Viết Test Cases (`docs/035-QA/Test-Cases/`).
 2.  Tuân thủ mapping trong `.agent/rules/documents.md`:
     -   Tên Test Plan: `MTP-{Name}.md`
     -   Tên Test Case: `TC-{Feature}-{NNN}.md`

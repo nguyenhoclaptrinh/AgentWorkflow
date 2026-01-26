@@ -14,14 +14,21 @@ outputs: ["Hotfix Branch", "PR to Main"]
 
 ---
 
-## Bước 1: Điều tra Nhanh & Cô lập
+## Bước 1: Kiểm tra An toàn & Chuẩn bị
 
 // turbo
 
-1.  **Phân tích Logs**: Đọc log production để xác định lỗi.
-2.  **Tác động**: Đánh giá phạm vi ảnh hưởng (Data loss? Downtime?).
-3.  **Cô lập**: Nếu cần, tạm tắt tính năng lỗi (feature flag) hoặc rollback.
-4.  **HỎI user**: "Có cần rollback ngay lập tức không hay fix nhanh?"
+1.  **Safety Check**:
+    ```bash
+    git status
+    ```
+    - Nếu có file chưa commit (dirty) -> **DỪNG LẠI**. Yêu cầu user stash hoặc commit.
+
+2.  **Sync Main**:
+    ```bash
+    git fetch origin main
+    ```
+    - Đảm bảo hotfix được tạo từ code production mới nhất.
 
 ---
 
@@ -29,10 +36,10 @@ outputs: ["Hotfix Branch", "PR to Main"]
 
 // turbo
 
-1.  **Checkout Main**: Hotfix phải đi từ `main` (code đang chạy trên prod), không phải `dev`.
+1.  **Checkout & Reset**:
     ```bash
     git checkout main
-    git pull origin main
+    git reset --hard origin/main
     ```
 2.  **Tạo Branch**:
     ```bash

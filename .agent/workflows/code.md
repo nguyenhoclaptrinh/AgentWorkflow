@@ -47,13 +47,16 @@ Phân rã plan thành các task nhỏ (atomic).
 
 **Output:** `✓ Step 2: Triển khai hoàn tất`
 
-### Step 3: Testing
+### Step 3: Testing & Self-Healing
 
 * Viết test.
 * Chạy test.
-* Fix bug (nếu có).
+* **Logic Tự Sửa Lỗi**:
+    - Nếu lỗi: Đọc log -> Sửa code -> Chạy lại.
+    - Max Retries: 3 lần.
+    - Nếu vẫn lỗi sau 3 lần: **DỪNG & Notify User**.
 
-**Output:** `✓ Step 3: Tests passed`
+**Output:** `✓ Step 3: Tests passed (hoặc Failed sau 3 retries)`
 
 ### Step 4: User Approval (Blocking Gate)
 

@@ -13,17 +13,13 @@ outputs: ["Committed Code"]
 
 ---
 
-## Bước 1: Phân tích & Lên kế hoạch
+## Bước 1: Đồng bộ & Phân tích
 
 // turbo
 
-1.  Hiểu rõ yêu cầu hoặc báo cáo lỗi.
-2.  **BẮT BUỘC** sử dụng `mcp_sequential-thinking_sequentialthinking` để:
-    -   Phân tích cấu trúc code hiện tại.
-    -   Thiết kế giải pháp.
-    -   Xác định các edge cases và rủi ro tiềm ẩn.
-3.  Nếu task phức tạp, tạo artifact `implementation_plan.md`.
-4.  **CHỜ** user xác nhận nếu kế hoạch liên quan đến thay đổi kiến trúc lớn.
+1.  **Sync Code**: Chạy workflow `/git-sync` để đảm bảo code mới nhất.
+2.  Hiểu rõ yêu cầu hoặc báo cáo lỗi.
+3.  **BẮT BUỘC** sử dụng `mcp_sequential-thinking_sequentialthinking` để phân tích tác động.
 
 ---
 
@@ -31,7 +27,7 @@ outputs: ["Committed Code"]
 
 // turbo
 
-1.  Sử dụng workflow **/git-branch** để tạo branch mới từ `dev`.
+1.  Sử dụng workflow **/git-branch** để tạo branch mới.
     -   Ví dụ: `fix/bug-login` hoặc `chore/update-deps`.
 
 ---
@@ -40,21 +36,22 @@ outputs: ["Committed Code"]
 
 // turbo
 
-1.  Thực hiện các thay đổi code theo kế hoạch.
-2.  **Backend**: Cập nhật models, logic, APIs nếu cần.
-3.  **Frontend**: Cập nhật UI components và state management.
-4.  Đảm bảo code tuân thủ chuẩn clean code và linting của dự án.
+1.  Thực hiện thay đổi code.
+2.  **Backend/Frontend**: Cập nhật logic/UI.
+3.  Đảm bảo tuân thủ Clean Code.
 
 ---
 
-## Bước 4: Kiểm thử & Xác minh
+## Bước 4: Kiểm thử & Tự sửa (Fix-Loop)
 
 // turbo
 
-1.  Chạy test hiện có để đảm bảo không có regressions.
-2.  Thêm unit hoặc integration tests mới cho các thay đổi.
-3.  Thực hiện verification thủ công (ví dụ: dùng browser tool để check UI).
-4.  **BẮT BUỘC** ghi lại bằng chứng (proof of work) vào artifact `walkthrough.md` nếu thay đổi lớn.
+1.  Chạy test liên quan.
+2.  **Self-Correction**:
+    - Nếu Test Fail -> **Đọc lỗi** -> **Sửa code** -> **Chạy lại**.
+    - Lặp lại tối đa 3 lần. Nếu vẫn fail -> Dừng và báo cáo User.
+3.  Verification thủ công (nếu cần).
+4.  Ghi lại bằng chứng vào `walkthrough.md`.
 
 ---
 

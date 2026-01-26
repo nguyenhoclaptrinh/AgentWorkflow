@@ -33,9 +33,9 @@ Các workflow atomic tương tác với Git.
 ### A. Core Development
 | Workflow | Loại | Mô tả | Ví dụ |
 | :--- | :--- | :--- | :--- |
-| `/development` | Procedure | Code task nhỏ, bug fix, thay đổi đơn giản. | "Sửa lỗi typo", "Đổi màu button" |
-| `/implement-feature` | Procedure | Triển khai tính năng trọn gói (Research -> Plan -> Code -> Test). | "Thêm module Thanh toán VNPAY" |
-| `/code` | Direct Executor | Engine thực thi trọn gói, tự động chạy plan (Atomic AI). | "Refactor thư mục `utils`", "Viết test coverage 80%" |
+| `/development` | Procedure | Code task nhỏ. **Tự động Sync code và Retry nếu test lỗi.** | "Sửa lỗi typo", "Đổi màu button" |
+| `/implement-feature` | Procedure | Triển khai tính năng trọn gói. **Có Gate chặn bắt buộc User duyệt.** | "Thêm module Thanh toán VNPAY" |
+| `/code` | Direct Executor | Engine thực thi trọn gói. **Tự động sửa lỗi (Self-Healing) khi failed.** | "Refactor thư mục `utils`", "Viết test coverage 80%" |
 | `/cook` | Interactive | Engine thực thi từng bước, cộng tác chặt chẽ với User. | "Cùng debug lỗi render React", "Hướng dẫn setup ENV" |
 
 ### B. Maintenance & Refactoring (Mới)

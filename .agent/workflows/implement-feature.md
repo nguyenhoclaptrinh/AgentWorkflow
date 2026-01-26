@@ -36,7 +36,7 @@ outputs: ["Source Code", "QA Report", "Updated Specs"]
     -   Kiểm tra cập nhật mới nhất của các thư viện (Next.js, Prisma...).
     -   Xác định vấn đề scaling hoặc bảo mật tiềm ẩn.
 2.  Cập nhật/Tạo tài liệu nghiên cứu trong `docs/050-Research/`.
-3.  **CHỜ** user review nếu tìm thấy insight quan trọng.
+3.  **Action**: Gọi tool `notify_user(BlockedOnUser: true)` để user review.
 
 ---
 
@@ -46,7 +46,7 @@ outputs: ["Source Code", "QA Report", "Updated Specs"]
 
 1.  **Adopt `[product-manager]` persona** để làm rõ yêu cầu.
 2.  Tạo artifact `feature-spec.md` gồm: Goal, User, Acceptance Criteria.
-3.  **CHỜ** user xác nhận.
+3.  **Action**: Gọi tool `notify_user(BlockedOnUser: true)` để user review.
 
 ---
 
@@ -68,7 +68,7 @@ outputs: ["Source Code", "QA Report", "Updated Specs"]
 1.  **Adopt `[lead-architect]` persona** để chia nhỏ task.
 2.  Tạo artifact `implementation-plan.md` với các task theo giai đoạn.
 3.  Lưu vào `docs/050-Tasks/Task-{FeatureName}.md` sau khi approve.
-4.  **CHỜ** user approve.
+4.  **Action**: Gọi tool `notify_user(BlockedOnUser: true)` để user review.
 
 ---
 
@@ -90,7 +90,7 @@ outputs: ["Source Code", "QA Report", "Updated Specs"]
     -   Unit tests (TDD).
 2.  Chạy test và verify.
 3.  Sử dụng **/git-commit** sau khi hoàn thành các milestone nhỏ.
-4.  **CHỜ** user checkpoint.
+4.  **Action**: Gọi tool `notify_user(BlockedOnUser: true)` để user review.
 
 ---
 
@@ -103,7 +103,7 @@ outputs: ["Source Code", "QA Report", "Updated Specs"]
     -   State management.
     -   Component tests.
 2.  Sử dụng **/git-commit** sau khi hoàn thành các milestone nhỏ.
-3.  **CHỜ** user checkpoint.
+3.  **Action**: Gọi tool `notify_user(BlockedOnUser: true)` để user review.
 
 ---
 

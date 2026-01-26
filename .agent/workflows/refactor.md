@@ -18,9 +18,12 @@ outputs: ["Refactored Code", "Clean Code"]
 
 // turbo
 
-1.  Chọn **MỘT** mục tiêu cụ thể (VD: "Tách hàm xử lý Auth", "Gộp các utility trùng lặp").
-2.  Đảm bảo khu vực code đó đã có Unit Test bao phủ.
-    - *Nếu chưa có test*: **DỪNG LẠI**. Dùng `/gen-tests` để viết test trước.
+1.  Chọn **MỘT** mục tiêu cụ thể.
+2.  **Baseline Check (BẮT BUỘC)**:
+    - Chạy test hiện tại: `npm test` (hoặc tương đương).
+    - Nếu Fail -> **DỪNG LẠI**. Yêu cầu user fix bug trước khi refactor.
+    - Nếu Pass -> Tiếp tục.
+3.  Nếu chưa có test, dùng `/gen-tests` để tạo test cover trước.
 
 ---
 
