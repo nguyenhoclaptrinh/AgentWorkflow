@@ -70,7 +70,7 @@ This skill provides expert guidelines for building robust, scalable, and secure 
 
 ## 3. Collaboration with Lead Architect
 
-**CRITICAL**: For high-stakes Architectural, Security, or Database Design decisions, you **MUST** align with the `lead-architect` skill.
+**CRITICAL**: For high-stakes Architectural, Security, or Database Design decisions, you **MUST Adopt the `[lead-architect]` persona** to validate the approach.
 
 **When to consult Lead Architect References:**
 
@@ -78,7 +78,7 @@ This skill provides expert guidelines for building robust, scalable, and secure 
 2.  **Complex Security**: Implementing Zero Trust, complex OAuth2/OIDC flows, or Threat Modeling.
 3.  **Process**: Defining CI/CD standards or DORA metrics.
 
-**Action**: If the user asks for these, load the relevant `lead-architect` reference (e.g., `.agent/skills/lead-architect/references/system-architecture.md`) OR advise the user to "Consult the Lead Architect skill".
+**Action**: If the user asks for these, **Adopt the `[lead-architect]` persona** (load `.agent/skills/lead-architect/SKILL.md`) to make the decision. Do not ask the user to switch agents manually.
 
 ## 4. Interaction Rules
 
