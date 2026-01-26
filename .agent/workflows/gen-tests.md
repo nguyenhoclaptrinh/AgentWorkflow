@@ -1,58 +1,58 @@
 ---
-description: Generate unit, E2E, security, and performance tests using the qa-tester skill.
+description: Tạo unit, E2E, security, và performance tests sử dụng qa-tester skill.
 ---
 
-# Generate Tests Workflow
+# Workflow Sinh Test (`/gen-tests`)
 
 > [!IMPORTANT]
-> **MANDATORY**: Apply `.agent/rules/documents.md` for all document creation and directory structure. All QA documents MUST be stored under `docs/035-QA/`.
+> **BẮT BUỘC**: Áp dụng `.agent/rules/documents.md` cho mọi việc tạo tài liệu và cấu trúc thư mục. Mọi tài liệu QA PHẢI được lưu dưới `docs/035-QA/`.
 
 ---
 
-## Step 1: Discovery & Strategy
+## Bước 1: Khám phá & Chiến lược
 
 // turbo
 
-1. **Invoke `[qa-tester]` skill** to analyze the `docs/` folder and current codebase structure.
-2. Ask the user which type of tests they want to generate:
-   - **Unit Tests**: For specific functions or utilities (e.g., `tests/unit/`).
-   - **E2E Tests**: For user flows (e.g., `tests/e2e/`).
-   - **Security Tests**: For vulnerability assessments.
-   - **Performance Tests**: For load and responsiveness checks.
-3. Identify the specific files or features that need testing based on user input.
+1.  **Gọi `[qa-tester]` skill** để phân tích folder `docs/` và cấu trúc codebase hiện tại.
+2.  Hỏi user loại test họ muốn sinh ra:
+    -   **Unit Tests**: Cho hàm hoặc utility cụ thể (VD: `tests/unit/`).
+    -   **E2E Tests**: Cho luồng người dùng (VD: `tests/e2e/`).
+    -   **Security Tests**: Đánh giá lỗ hổng bảo mật.
+    -   **Performance Tests**: Kiểm tra tải và độ phản hồi.
+3.  Xác định file hoặc tính năng cụ thể cần test dựa trên input của user.
 
 ---
 
-## Step 2: Test Plan & Case Generation
+## Bước 2: Kế hoạch Test & Sinh Test Case
 
 // turbo
 
-1. **Invoke `[qa-tester]` skill** to create/update the Test Plan and Test Cases:
-   - For **Unit Tests**: Identify edge cases, boundary conditions, and happy paths.
-   - For **E2E Tests**: valid/invalid user flows.
-   - For **Security**: potential injection points, auth flaws.
-2. Generate the test documentation in `docs/035-QA/Test-Cases/` following the naming convention `TC-{Feature}-{NNN}.md`.
-3. Create a `draft-test-docs.md` artifact with the proposed test cases for review.
+1.  **Gọi `[qa-tester]` skill** để tạo/cập nhật Test Plan và Test Cases:
+    -   Với **Unit Tests**: Nhận diện edge cases, điều kiện biên, và happy paths.
+    -   Với **E2E Tests**: luồng hợp lệ/không hợp lệ.
+    -   Với **Security**: điểm injection tiềm năng, lỗi auth.
+2.  Tạo tài liệu test trong `docs/035-QA/Test-Cases/` theo chuẩn tên `TC-{Feature}-{NNN}.md`.
+3.  Tạo artifact `draft-test-docs.md` với các test case đề xuất để review.
 
 ---
 
-## Step 3: Test Code Generation
+## Bước 3: Sinh Code Test
 
-1. **Wait** for user approval of the test cases.
-2. **Invoke `[qa-tester]` skill** to generate the actual test code.
-   - Use the project's existing testing framework (e.g., Jest, Playwright, Vitest).
-   - Ensure mocks and stubs are correctly implemented for unit tests.
-   - Ensure selectors and interaction steps are robust for E2E tests.
-3. Save the generated test code to the appropriate directories (e.g., `tests/unit/`, `tests/e2e/`).
+1.  **Chờ** user approve các test case.
+2.  **Gọi `[qa-tester]` skill** để sinh code test thực tế.
+    -   Sử dụng framework test hiện có của dự án (VD: Jest, Playwright, Vitest).
+    -   Đảm bảo mocks và stubs được triển khai đúng cho unit tests.
+    -   Đảm bảo selectors và các bước tương tác ổn định cho E2E tests.
+3.  Lưu code test đã sinh vào thư mục phù hợp (VD: `tests/unit/`, `tests/e2e/`).
 
 ---
 
-## Step 4: Verification & Reporting
+## Bước 4: Verification & Báo cáo
 
-1. Run the generated tests using the project's test runner.
-2. If tests fail:
-   - Analyze the failure.
-   - **Invoke `[qa-tester]` skill** to fix the test code or report the bug if it's a real issue.
-3. **Mandatory**:
-   - Update `docs/035-QA/QA-MOC.md`.
-   - Update `docs/000-Index.md` if needed.
+1.  Chạy các test vừa tạo bằng test runner của dự án.
+2.  Nếu test fail:
+    -   Phân tích lỗi.
+    -   **Gọi `[qa-tester]` skill** để sửa code test hoặc báo bug nếu là lỗi thật.
+3.  **Bắt buộc**:
+    -   Cập nhật `docs/035-QA/QA-MOC.md`.
+    -   Cập nhật `docs/000-Index.md` nếu cần.

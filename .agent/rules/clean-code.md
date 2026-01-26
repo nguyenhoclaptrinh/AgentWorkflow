@@ -14,6 +14,11 @@ You must adhere to these clean code principles when generating or modifying code
 - **KISS (Keep It Simple, Stupid)**: Avoid over-engineering. Code should be easy to understand.
 - **YAGNI (You Aren't Gonna Need It)**: Do not implement features or abstraction "just in case".
 
+## Related Rules
+
+- **Communication**: See `.agent/rules/communication.md` for language rules (Vietnamese required).
+- **Git Workflow**: See `.agent/workflows/commit-branch-management.md` for branching and commit standards.
+
 ## Naming Conventions
 
 - Variables and functions should be descriptive (e.g., `isUserLoggedIn` instead of `flag`).

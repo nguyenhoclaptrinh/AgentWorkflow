@@ -1,59 +1,59 @@
 ---
-description: Create comprehensive test case documents and test plans based on project requirements.
+description: Tạo tài liệu test case và test plan toàn diện dựa trên yêu cầu dự án.
 ---
 
-# QA Workflow
+# Workflow QA (`/qa`)
 
 > [!IMPORTANT]
-> **MANDATORY**: Apply `.agent/rules/documents.md` for all document creation and directory structure. All QA documents MUST be stored under `docs/035-QA/`.
+> **BẮT BUỘC**: Áp dụng `.agent/rules/documents.md` cho mọi việc tạo tài liệu và cấu trúc thư mục. Mọi tài liệu QA PHẢI được lưu dưới `docs/035-QA/`.
 
 ---
 
-## MCP Usage Guidelines
+## Hướng dẫn sử dụng MCP
 
-| MCP Tool                                     | When to Use                                      |
-| :------------------------------------------- | :----------------------------------------------- |
-| `mcp_sequential-thinking_sequentialthinking` | Analyze complex application logic and edge cases |
-| `mcp_context7_query-docs`                    | Research testing frameworks or best practices    |
+| MCP Tool | Khi nào dùng |
+| :--- | :--- |
+| `sequential-thinking` | Phân tích logic ứng dụng phức tạp và edge cases |
+| `context7_query-docs` | Nghiên cứu framework testing hoặc best practices |
 
 ---
 
-## Step 1: Requirement Discovery
+## Bước 1: Khám phá Yêu cầu
 
 // turbo
 
-1. **Invoke `[qa-tester]` skill** to analyze the `docs/` folder.
-2. Identify features, constraints, and business logic that require testing.
-3. Map out:
-   - Happy Paths (Golden Flows)
-   - Negative Paths (Error handling)
-   - Boundary Cases
-   - Security/Performance considerations
-4. **WAIT** for user to confirm the list of scenarios to be documented.
+1.  **Gọi `[qa-tester]` skill** để phân tích folder `docs/`.
+2.  Nhận diện tính năng, ràng buộc và business logic cần test.
+3.  Lên bản đồ:
+    -   Happy Paths (Golden Flows)
+    -   Negative Paths (Xử lý lỗi)
+    -   Boundary Cases
+    -   Cân nhắc về Security/Performance
+4.  **CHỜ** user xác nhận danh sách kịch bản (scenarios) cần làm tài liệu.
 
 ---
 
-## Step 2: Draft Test Documentation
+## Bước 2: Soạn thảo Tài liệu Test
 
 // turbo
 
-1. **Invoke `[qa-tester]` skill** to create:
-   - **Test Plan**: High-level strategy for the current release/feature (`docs/035-QA/Test-Plans/`).
-   - **Test Cases**: Detailed step-by-step cases (`docs/035-QA/Test-Cases/`).
-2. Follow the standard mapping in `.agent/rules/documents.md`:
-   - Test Plan naming: `MTP-{Name}.md`
-   - Test Case naming: `TC-{Feature}-{NNN}.md`
-3. Create a `draft-qa-docs.md` artifact for review.
+1.  **Gọi `[qa-tester]` skill** để tạo:
+    -   **Test Plan**: Chiến lược mức cao cho release/feature hiện tại (`docs/035-QA/Test-Plans/`).
+    -   **Test Cases**: Chi tiết từng bước (`docs/035-QA/Test-Cases/`).
+2.  Tuân thủ mapping trong `.agent/rules/documents.md`:
+    -   Tên Test Plan: `MTP-{Name}.md`
+    -   Tên Test Case: `TC-{Feature}-{NNN}.md`
+3.  Tạo artifact `draft-qa-docs.md` để review.
 
 ---
 
-## Step 3: Finalize and Organize
+## Bước 3: Hoàn tất và Tổ chức
 
 // turbo
 
-1. After approval, save all files to their respective folders in `docs/035-QA/`.
-2. **Mandatory**:
-   - Update `docs/035-QA/QA-MOC.md`.
-   - Update `docs/000-Index.md` if needed.
-   - Ensure all frontmatter (id, type, status, created) is correctly populated according to `.agent/rules/documents.md`.
-3. Present summary of created tests.
+1.  Sau khi approve, lưu tất cả file vào folder tương ứng trong `docs/035-QA/`.
+2.  **Bắt buộc**:
+    -   Cập nhật `docs/035-QA/QA-MOC.md`.
+    -   Cập nhật `docs/000-Index.md` nếu cần.
+    -   Đảm bảo frontmatter (id, type, status, created) đúng chuẩn `.agent/rules/documents.md`.
+3.  Trình bày tóm tắt các test đã tạo.

@@ -1,97 +1,97 @@
 ---
-description: Analyze ideas with the user and create preliminary high-level documents (Roadmap, PRD).
+description: Phân tích ý tưởng cùng user và tạo các tài liệu sơ bộ mức cao (Roadmap, PRD).
 ---
 
-# Brainstorm Workflow
+# Workflow Brainstorm
 
 > [!IMPORTANT]
-> **MANDATORY**: Read `.agent/rules/documents.md` before creating any document.
+> **BẮT BUỘC**: Đọc `.agent/rules/documents.md` trước khi tạo bất kỳ tài liệu nào.
 
 ---
 
-## MCP Usage Guidelines
+## Hướng dẫn sử dụng MCP
 
-| MCP Tool                                     | When to Use                                            | Example                                 |
-| :------------------------------------------- | :----------------------------------------------------- | :-------------------------------------- |
-| `mcp_sequential-thinking_sequentialthinking` | Analyze requirements, feature dependencies, trade-offs | Break down ambiguous requests           |
-| `mcp_context7_resolve-library-id`            | Find library ID before querying                        | "mermaid js"                            |
-| `mcp_context7_query-docs`                    | Research library patterns, APIs, best practices        | "How to setup auth in Next.js"          |
-| `search_web`                                 | Proactive research for implementation patterns         | "best architecture for agentic systems" |
+| MCP Tool | Khi nào dùng | Ví dụ |
+| :--- | :--- | :--- |
+| `sequential-thinking` | Phân tích yêu cầu, phụ thuộc tính năng, đánh đổi | Chia nhỏ request mơ hồ |
+| `context7_resolve-library-id` | Tìm ID thư viện trước khi tra cứu | "mermaid js" |
+| `context7_query-docs` | Nghiên cứu pattern, API thư viện, best practices | "How to setup auth in Next.js" |
+| `search_web` | Nghiên cứu chủ động các pattern triển khai | "best architecture for agentic systems" |
 
 ---
 
-## Step 1: Deep Research
+## Bước 1: Nghiên cứu Chuyên sâu (Deep Research)
 
 // turbo
 
-> 💡 **MANDATORY**: Follow `.agent/rules/research.md` before starting any ideation.
+> 💡 **BẮT BUỘC**: Tuân thủ `.agent/rules/research.md` trước khi bắt đầu lên ý tưởng.
 
-1. **Invoke `[research]`** (via `search_web` + `read_url_content`) to:
-   - Identify 5-10 key trends in the project's domain.
-   - Find "best-in-class" examples of similar products.
-   - Identify common pitfalls and modern "Wow Factors".
-2. Create `research-insights.md` artifact in `docs/050-Research/`.
-3. **WAIT** for user to review the research findings.
-
----
-
-## Document Priority Order
-
-```
-Priority 0: Roadmap       ← Project Planning & Timeline
-Priority 1: PRD           ← Strategic Overview
-```
+1.  **Gọi `[research]`** (via `search_web` + `read_url_content`) để:
+    -   Xác định 5-10 xu hướng chính trong domain dự án.
+    -   Tìm các ví dụ "best-in-class" của sản phẩm tương tự.
+    -   Nhận diện các cạm bẫy phổ biến và "Wow Factors" hiện đại.
+2.  Tạo artifact `research-insights.md` trong `docs/050-Research/`.
+3.  **CHỜ** user review kết quả nghiên cứu.
 
 ---
 
-## Step 2: Clarification & Understanding
+## Thứ tự Ưu tiên Tài liệu
 
-**Role: Product Manager**
+```
+Priority 0: Roadmap       ← Quy hoạch Dự án & Dòng thời gian
+Priority 1: PRD           ← Tổng quan Chiến lược
+```
+
+---
+
+## Bước 2: Làm rõ & Thấu hiểu
+
+**Vai trò: Product Manager**
 
 > [!NOTE]
-> This step is **MANDATORY**. Do NOT proceed without user confirmation.
+> Bước này là **BẮT BUỘC**. KHÔNG ĐƯỢC đi tiếp nếu chưa có xác nhận của user.
 
-> 💡 **MCP**: Use `sequential-thinking` to analyze ambiguous or complex requests
+> 💡 **MCP**: Sử dụng `sequential-thinking` để phân tích các yêu cầu mơ hồ hoặc phức tạp.
 
-1. **Invoke `[product-manager]` skill** to:
-   - Summarize understanding
-   - Create clarification questions
-2. Create `clarification-questions.md` artifact
-3. **WAIT** for user to review and confirm
+1.  **Gọi `[product-manager]` skill** để:
+    -   Tóm tắt mức độ hiểu.
+    -   Tạo câu hỏi làm rõ (clarification questions).
+2.  Tạo artifact `clarification-questions.md`.
+3.  **CHỜ** user review và xác nhận.
 
 ---
 
-## Step 3: Create Roadmap
+## Bước 3: Tạo Roadmap
 
 // turbo
 
-> 💡 **MCP**: Use `sequential-thinking` for phased planning and risk assessment
+> 💡 **MCP**: Sử dụng `sequential-thinking` cho việc lên kế hoạch theo giai đoạn và đánh giá rủi ro.
 
-1. **Invoke `[product-manager]` skill** to draft:
-   - Project timeline and milestones
-   - Phase breakdown (MVP, v1.0, v2.0)
-   - Key deliverables per phase
-2. Create `draft-roadmap.md` artifact
-3. After approval → Save to `docs/010-Planning/Roadmap-{ProjectName}.md`
-4. **WAIT** for user response
+1.  **Gọi `[product-manager]` skill** để soạn thảo:
+    -   Timeline dự án và các cột mốc (milestones).
+    -   Phân chia giai đoạn (MVP, v1.0, v2.0).
+    -   Các deliverables chính theo từng giai đoạn.
+2.  Tạo artifact `draft-roadmap.md`.
+3.  Sau khi approve → Lưu vào `docs/010-Planning/Roadmap-{ProjectName}.md`.
+4.  **CHỜ** phản hồi của user.
 
 ---
 
-## Step 4: Create PRD
+## Bước 4: Tạo PRD
 
 // turbo
 
-1. **Invoke `[product-manager]` skill** to draft:
-   - Business objectives and success metrics
-   - Target audience/user personas
-   - Feature prioritization (MoSCoW)
-2. Create `draft-prd.md` artifact
-3. After approval → Save to `docs/020-Requirements/PRD-{ProjectName}.md`
-4. **WAIT** for user response
+1.  **Gọi `[product-manager]` skill** để soạn thảo:
+    -   Mục tiêu kinh doanh và chỉ số thành công.
+    -   Đối tượng mục tiêu/User personas.
+    -   Độ ưu tiên tính năng (MoSCoW).
+2.  Tạo artifact `draft-prd.md`.
+3.  Sau khi approve → Lưu vào `docs/020-Requirements/PRD-{ProjectName}.md`.
+4.  **CHỜ** phản hồi của user.
 
 ---
 
-## Step 5: Transition to Documentation
+## Bước 5: Chuyển tiếp sang Documentation
 
-1. Present summary of created artifacts (Roadmap, PRD).
-2. Suggest next step: Run `/documentation` to generate detailed specifications (SDD, Epics, Stories).
+1.  Trình bày tóm tắt các artifact đã tạo (Roadmap, PRD).
+2.  Đề xuất bước tiếp theo: Chạy `/documentation` để tạo đặc tả chi tiết (SDD, Epics, Stories).

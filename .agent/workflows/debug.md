@@ -1,71 +1,71 @@
 ---
-description: Scientific debugging workflow: Hypothesize, Instrument, Reproduce, Analyze, Fix.
+description: Workflow debug khoa học: Giả thuyết, Đo đạc, Tái hiện, Phân tích, Fix.
 ---
 
-# Scientific Debug & Fix Workflow
+# Workflow Debug & Fix Khoa học
 
 > [!IMPORTANT]
-> **GOAL**: Follow a scientific process to identify root causes with EVIDENCE before applying fixes.
-> **Best for**: Hard-to-reproduce bugs, race conditions, performance issues, and regressions.
+> **MỤC TIÊU**: Tuân thủ quy trình khoa học để tìm root cause với BẰNG CHỨNG trước khi fix.
+> **Phù hợp cho**: Bug khó tái hiện, race conditions, vấn đề hiệu năng, và regressions.
 
 ---
 
-## Step 1: Hypothesis Generation
+## Bước 1: Tạo Giả thuyết
 
-1. **Analyze the Issue**: Review the bug report and available context.
-2. **Generate Hypotheses**: Brainstorm multiple potential causes (e.g., "Race condition in data fetching", "Incorrect state update logic", "Edge case in input validation").
-3. **Select Top Candidates**: Prioritize the most likely hypotheses to investigate first.
-
----
-
-## Step 2: Instrumentation
-
-1. **Plan Logging**: Decide WHERE key information is missing to validate your hypotheses.
-2. **Add Logging**: Instrument the code with targetted `console.log`, specific logger calls, or performance markers.
-   - _Goal_: Capture runtime state, variable values, and execution flow relevant to the hypotheses.
-   - _Tip_: Add unique prefixes to logs (e.g., `[DEBUG-HYPOTHESIS-1]`) for easy filtering.
+1.  **Phân tích Vấn đề**: Review báo cáo bug và context có sẵn.
+2.  **Tạo Giả thuyết**: Brainstorm nhiều nguyên nhân tiềm năng (VD: "Race condition khi fetch data", "Logic update state sai", "Edge case khi validate input").
+3.  **Chọn Ứng viên Hàng đầu**: Ưu tiên những giả thuyết khả thi nhất để điều tra trước.
 
 ---
 
-## Step 3: Reproduction & Data Collection
+## Bước 2: Đo đạc (Instrumentation)
 
-1. **Execution**: Run the application or test case to reproduce the bug.
-   - If a reproduction script doesn't exist, create one now if possible.
-2. **Collect Data**: Capture the output from your instrumentation.
-
----
-
-## Step 4: Analysis & Root Cause
-
-1. **Analyze Evidence**: Look at the collected logs/data.
-   - Does the data confirm a hypothesis?
-   - Does it rule one out?
-2. **Pinpoint Root Cause**: Identify exactly _why_ the bug is happening based on the evidence.
-3. **Iterate (if needed)**: If inconclusive, return to Step 1 or 2 with new knowledge.
+1.  **Lên kế hoạch Log**: Quyết định xem thông tin gì đang thiếu để validate giả thuyết.
+2.  **Thêm Log**: Chèn code log có mục tiêu (`console.log`, logger calls, markers).
+    -   *Mục tiêu*: Bắt được state lúc runtime, giá trị biến, và luồng thực thi liên quan đến giả thuyết.
+    -   *Tip*: Thêm prefix độc nhất (VD: `[DEBUG-HYPOTHESIS-1]`) để dễ lọc.
 
 ---
 
-## Step 5: Targeted Implementation
+## Bước 3: Tái hiện & Thu thập Dữ liệu
 
-1. **Apply Fix**: Implement a targeted fix based _only_ on the confirmed root cause. Avoid "shotgun debugging" (changing things randomly).
-2. **Cleanup**: Remove the temporary debugging instrumentation.
+1.  **Thực thi**: Chạy ứng dụng hoặc test case để tái hiện bug.
+    -   Nếu chưa có script tái hiện, hãy tạo ngay nếu có thể.
+2.  **Thu thập Dữ liệu**: Lấy output từ việc đo đạc ở bước trên.
 
 ---
 
-## Step 6: Verification
+## Bước 4: Phân tích & Root Cause
+
+1.  **Phân tích Bằng chứng**: Nhìn vào logs/data thu thập được.
+    -   Dữ liệu có xác nhận giả thuyết không?
+    -   Nó có loại trừ giả thuyết nào không?
+2.  **Chốt Root Cause**: Xác định chính xác *tại sao* bug xảy ra dựa trên bằng chứng.
+3.  **Lặp lại (nếu cần)**: Nếu chưa kết luận được, quay lại Bước 1 hoặc 2 với kiến thức mới.
+
+---
+
+## Bước 5: Triển khai Fix có mục tiêu
+
+1.  **Apply Fix**: Triển khai fix dựa *duy nhất* vào root cause đã xác nhận. Tránh "shotgun debugging" (sửa mò, sửa lung tung).
+2.  **Dọn dẹp**: Xóa các code log/đo đạc tạm thời.
+
+---
+
+## Bước 6: Verification
 
 // turbo
 
-1. **Run Reproduction Test**: Verify that the bug is gone.
-2. **Run Regression Tests**: Run related unit tests to ensure no side effects.
-3. **Lint & Type Check**: Ensure code quality standards are met.
+1.  **Chạy Test Tái hiện**: Xác nhận bug đã hết.
+2.  **Chạy Regression Tests**: Chạy unit tests liên quan để đảm bảo không có side effects.
+3.  **Lint & Type Check**: Đảm bảo chất lượng code.
 
 ---
 
-## Step 7: Finalize
+## Bước 7: Finalize
 
-1. **Draft Commit**: Create a concise commit message (e.g., `fix(module): description of fix`).
-2. **Report**: Summarize the process:
-   - What was the hypothesis?
-   - What evidence confirmed it?
-   - How was it fixed?
+1.  **Draft Commit**: Tạo commit message ngắn gọn (VD: `fix(module): mô tả fix`).
+2.  **Báo cáo**: Tóm tắt quy trình:
+    -   Giả thuyết là gì?
+    -   Bằng chứng nào xác nhận nó?
+    -   Đã fix như thế nào?

@@ -1,164 +1,128 @@
 ---
-description: Orchestrates feature implementation from specification to deployment.
+description: Điều phối việc triển khai tính năng từ đặc tả đến khi hoàn thành.
 ---
 
-# Feature Implementation Workflow
+# Quy trình Triển khai Tính năng (`/implement-feature`)
 
 > [!IMPORTANT]
-> **MANDATORY**: Read `.agent/rules/documents.md` before creating any document.
+> **BẮT BUỘC**: Đọc `.agent/rules/documents.md` trước khi tạo bất kỳ tài liệu nào.
 
 ---
 
-## MCP Usage Guidelines
+## Hướng dẫn sử dụng MCP
 
-| MCP Tool                                     | When to Use                                       | Example Query                       |
-| -------------------------------------------- | ------------------------------------------------- | ----------------------------------- |
-| `mcp_sequential-thinking_sequentialthinking` | Complex decisions, debugging, architecture design | Break down feature into tasks       |
-| `mcp_context7_resolve-library-id`            | Find library ID before querying docs              | "react hook form"                   |
-| `mcp_context7_query-docs`                    | Research UI libraries (shadcn, radix, tailwind)   |
-| `search_web`                                 | Research design trends and UX patterns            | "modern SaaS dashboard trends 2026" |
-| `generate_image`                             | Create low-fi wireframes or conceptual assets     |
+| MCP Tool | Khi nào dùng | Ví dụ |
+| :--- | :--- | :--- |
+| `sequential-thinking` | Quyết định phức tạp, debug, thiết kế kiến trúc | Chia nhỏ tính năng thành task |
+| `context7_resolve-library-id` | Tìm ID thư viện trước khi tra cứu docs | "react hook form" |
+| `context7_query-docs` | Nghiên cứu thư viện UI (shadcn, radix...) | |
+| `search_web` | Nghiên cứu xu hướng thiết kế và UX patterns | "modern SaaS dashboard trends 2026" |
+| `generate_image` | Tạo wireframe low-fi hoặc tài sản concept | |
 
 ---
 
-## Step 1: Deep Research
+## Bước 1: Nghiên cứu Chuyên sâu (Deep Research)
 
 // turbo
 
-> 💡 **MANDATORY**: Follow `.agent/rules/research.md` to ensure modern implementation.
+> 💡 **BẮT BUỘC**: Tuân thủ `.agent/rules/research.md` để đảm bảo tính năng hiện đại.
 
-1. **Invoke `[research]`** to:
-   - Find the most efficient/modern patterns for the requested feature.
-   - Check for recent updates in libraries used (Next.js, Prisma, etc.).
-   - Identify potential scaling or security issues related to the implementation.
-2. Update/Create research documentation in `docs/050-Research/`.
-3. **WAIT** for user to review if new critical insights are found.
-
----
-
-## Step 2: Quick Specification (Optional)
-
-**Skip if**: User Stories or specs already exist in `docs/`.
-
-> 💡 **MCP**: Use `sequential-thinking` to analyze ambiguous requirements
-
-1. **Invoke `[product-manager]` skill** to clarify requirements
-2. Create `feature-spec.md` artifact with: Goal, User, Acceptance Criteria
-3. **WAIT** for user confirmation
+1.  **Gọi `[research]`** để:
+    -   Tìm các pattern hiệu quả/hiện đại nhất cho tính năng yêu cầu.
+    -   Kiểm tra cập nhật mới nhất của các thư viện (Next.js, Prisma...).
+    -   Xác định vấn đề scaling hoặc bảo mật tiềm ẩn.
+2.  Cập nhật/Tạo tài liệu nghiên cứu trong `docs/050-Research/`.
+3.  **CHỜ** user review nếu tìm thấy insight quan trọng.
 
 ---
 
-## Step 3: Locate Existing Artifacts
+## Bước 2: Đặc tả Nhanh (Optional)
+
+**Bỏ qua nếu**: Đã có User Stories hoặc Specs trong `docs/`.
+
+1.  **Gọi `[product-manager]` skill** để làm rõ yêu cầu.
+2.  Tạo artifact `feature-spec.md` gồm: Goal, User, Acceptance Criteria.
+3.  **CHỜ** user xác nhận.
+
+---
+
+## Bước 3: Định vị Artifacts Hiện có
 
 // turbo
 
-> 💡 **MCP**: Use `context7` to research unfamiliar tech in existing codebase
-
-1. Search `docs/` for related: User Stories, SDD, Designs
-2. **Invoke `[lead-architect]` skill** to identify scope and dependencies
-3. List files to create/modify
-4. **WAIT** for user to confirm scope
+1.  Tìm kiếm trong `docs/` các tài liệu liên quan: User Stories, SDD, Designs.
+2.  **Gọi `[lead-architect]` skill** để xác định phạm vi và dependencies.
+3.  Liệt kê các file cần tạo/sửa.
+4.  **CHỜ** user xác nhận phạm vi.
 
 ---
 
-## Step 4: Implementation Plan
+## Bước 4: Lên Kế hoạch Triển khai
 
 // turbo
 
-> 💡 **MCP**: **MUST** use `sequential-thinking` to break down complex features into atomic tasks
-
-1. **Invoke `[lead-architect]` skill** to create task breakdown
-2. Create `implementation-plan.md` artifact with phased tasks
-3. Save to `docs/050-Tasks/Task-{FeatureName}.md` after approval
-4. **WAIT** for user approval
+1.  **Gọi `[lead-architect]` skill** để chia nhỏ task.
+2.  Tạo artifact `implementation-plan.md` với các task theo giai đoạn.
+3.  Lưu vào `docs/050-Tasks/Task-{FeatureName}.md` sau khi approve.
+4.  **CHỜ** user approve.
 
 ---
 
-## Step 5: Design Review (If UI Feature)
+## Bước 5: Khởi tạo Branch
 
 // turbo
 
-**Skip if**: Feature is purely backend/API.
-
-> 💡 **MCP**: Use `context7` with `/radix-ui/*` or `/shadcn/*` for component patterns
-
-1. Check `docs/040-Design/` for existing designs
-2. **Invoke `[designer]` skill** for new component specifications
-3. **WAIT** for user confirmation
+1.  Sử dụng workflow **/git-branch** để tạo branch tính năng mới (`feature/...`).
 
 ---
 
-## Step 6: Backend Implementation
+## Bước 6: Implement Backend
 
 // turbo
 
-> 💡 **MCP**:
->
-> - Use `context7` with `/supabase/supabase`, `/prisma/prisma` for DB patterns
-> - Use `sequential-thinking` for complex business logic
-
-1. **Invoke `[backend-developer]` skill** for:
-   - Data models/migrations
-   - API endpoints/server functions
-   - Unit tests (TDD approach)
-2. Run tests and verify
-3. **WAIT** for user checkpoint
+1.  **Gọi `[backend-developer]` skill** để:
+    -   Data models/migrations.
+    -   API endpoints/server functions.
+    -   Unit tests (TDD).
+2.  Chạy test và verify.
+3.  Sử dụng **/git-commit** sau khi hoàn thành các milestone nhỏ.
+4.  **CHỜ** user checkpoint.
 
 ---
 
-## Step 7: Frontend Implementation
+## Bước 7: Implement Frontend
 
 // turbo
 
-> 💡 **MCP**: Use `context7` with `/vercel/next.js`, `/tanstack/react-query`, `/react-hook-form/*` for patterns
-
-1. **Invoke `[frontend-developer]` skill** for:
-   - Components following design specs
-   - State management
-   - Component tests
-2. **WAIT** for user checkpoint
+1.  **Gọi `[frontend-developer]` skill** để:
+    -   Components theo design specs.
+    -   State management.
+    -   Component tests.
+2.  Sử dụng **/git-commit** sau khi hoàn thành các milestone nhỏ.
+3.  **CHỜ** user checkpoint.
 
 ---
 
-## Step 8: Integration & QA
+## Bước 8: Integration & QA
 
 // turbo
 
-> 💡 **MCP**:
->
-> - Use `context7` with `/vitest-dev/vitest`, `/playwright/*` for testing patterns
-> - Use `sequential-thinking` to analyze test failures
-
-1. **Invoke `[qa-tester]` skill** for:
-   - E2E test execution
-   - Acceptance criteria verification
-   - Edge case testing
-2. Create `qa-report.md` artifact
-3. **WAIT** for user to confirm ready
+1.  **Gọi `[qa-tester]` skill** để:
+    -   Chạy E2E test.
+    -   Verify Acceptance Criteria.
+    -   Test Edge case.
+2.  Tạo artifact `qa-report.md`.
+3.  **CHỜ** user xác nhận sẵn sàng.
 
 ---
 
-## Step 9: Finalize
+## Bước 9: Finalize
 
 // turbo
 
-1. **Invoke `[lead-architect]` skill** to:
-   - Update MOC files
-   - Move task to `docs/050-Tasks/Completed/`
-   - Update API/changelog if applicable
-2. Present completion summary with next steps
-
----
-
-## Quick Reference
-
-| Step | Skill              | Output                 |
-| ---- | ------------------ | ---------------------- |
-| 1    | research           | research-insights.md   |
-| 2    | product-manager    | feature-spec.md        |
-| 3-4  | lead-architect     | implementation-plan.md |
-| 5    | designer           | Component specs        |
-| 6    | backend-developer  | API, Models, Tests     |
-| 7    | frontend-developer | Components, Tests      |
-| 8    | qa-tester          | qa-report.md           |
-| 9    | lead-architect     | Updated docs           |
+1.  **Gọi `[lead-architect]` skill** để:
+    -   Cập nhật các file MOC.
+    -   Di chuyển task vào `docs/050-Tasks/Completed/`.
+    -   Update API/changelog nếu cần.
+2.  Trình bày tóm tắt hoàn thành.
+3.  Nhắc user sử dụng **/git-pr** để tạo Pull Request.

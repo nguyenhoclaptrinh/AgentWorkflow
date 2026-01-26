@@ -1,182 +1,182 @@
 ---
-description: Generate comprehensive documentation (Architecture, API, Specs) from either Codebase or Requirements.
+description: Tạo tài liệu toàn diện (Kiến trúc, API, Specs) từ Codebase hoặc Requirements.
 ---
 
-# Documentation Workflow
+# Workflow Tài liệu (`/documentation`)
 
 > [!IMPORTANT]
-> **MANDATORY**: Apply `.agent/rules/documents.md` for all document creation.
+> **BẮT BUỘC**: Áp dụng `.agent/rules/documents.md` cho mọi hoạt động tạo tài liệu.
 
 ---
 
-## MCP Usage Guidelines
+## Hướng dẫn sử dụng MCP
 
-| MCP Tool                                     | When to Use                                    |
-| :------------------------------------------- | :--------------------------------------------- |
-| `mcp_sequential-thinking_sequentialthinking` | Analyze complex architecture, design decisions |
-| `mcp_context7_query-docs`                    | Research framework patterns, diagram syntax    |
-
----
-
-## Step 0: Determine Mode
-
-**Determine the source of truth:**
-
-1. **From Codebase**: Reverse engineer docs from existing code.
-2. **From Requirements**: Forward engineer detailed specs (SDD, Stories) from PRD/Roadmap.
+| MCP Tool | Khi nào dùng |
+| :--- | :--- |
+| `sequential-thinking` | Phân tích kiến trúc phức tạp, quyết định thiết kế |
+| `context7_query-docs` | Nghiên cứu pattern framework, cú pháp diagram |
 
 ---
 
-# MODE A: From Codebase
+## Bước 0: Xác định Chế độ (Mode)
 
-## Step A1: Codebase Discovery
+**Xác định nguồn sự thật (source of truth):**
+
+1.  **Từ Codebase (Mode A)**: Dịch ngược (Reverse engineer) tài liệu từ code hiện có.
+2.  **Từ Requirements (Mode B)**: Thiết kế xuôi (Forward engineer) specs chi tiết (SDD, Stories) từ PRD/Roadmap.
+
+---
+
+# MODE A: Từ Codebase
+
+## Bước A1: Khám phá Codebase
 
 // turbo
 
-> 💡 **MCP**: Use `sequential-thinking` to analyze unfamiliar project structures
+> 💡 **MCP**: Sử dụng `sequential-thinking` để phân tích cấu trúc dự án lạ.
 
-1. **Invoke `[lead-architect]` skill** to analyze codebase structure
-2. Identify: tech stack, entry points, API routes, DB schemas
-3. **Clarify & Confirm**:
-   - **CRITICAL**: If the codebase structure is unclear or ambiguous, **ASK** the user for clarification.
-   - Summarize findings and **WAIT** for user to confirm understanding
+1.  **Gọi `[lead-architect]` skill** để phân tích cấu trúc codebase.
+2.  Nhận diện: tech stack, entry points, API routes, DB schemas.
+3.  **Làm rõ & Xác nhận**:
+    -   **QUAN TRỌNG**: Nếu cấu trúc không rõ ràng, **HỎI** user ngay.
+    -   Tóm tắt những gì tìm thấy và **CHỜ** user xác nhận hiểu đúng.
 
 ---
 
-## Step A2: Technical Documentation (Architecture, API, Schema)
+## Bước A2: Tài liệu Kỹ thuật (Kiến trúc, API, Schema)
 
 // turbo
 
-1. **Invoke `[lead-architect]` skill** to create:
-   - System Context (C4 Context Diagram)
-   - Component View (C4 Component Diagram)
-   - **Sequence Diagrams** for critical business flows
-2. **Invoke `[backend-developer]` skill** to:
-   - Document API endpoints (OpenAPI/Swagger styled)
-   - Generate Entity Relationship Diagram (ERD)
-   - Document key algorithms or data processing pipelines
-3. Save to `docs/030-Specs/` and `docs/030-Specs/Architecture/`
+1.  **Gọi `[lead-architect]` skill** để tạo:
+    -   System Context (C4 Context Diagram).
+    -   Component View (C4 Component Diagram).
+    -   **Sequence Diagrams** cho các luồng nghiệp vụ quan trọng.
+2.  **Gọi `[backend-developer]` skill** để:
+    -   Tài liệu API endpoints (phong cách OpenAPI/Swagger).
+    -   Tạo ERD (Entity Relationship Diagram).
+    -   Tài liệu các thuật toán chính hoặc pipeline xử lý dữ liệu.
+3.  Lưu vào `docs/030-Specs/` và `docs/030-Specs/Architecture/`.
 
 ---
 
-## Step A3: Functional Documentation (Reverse Engineering)
+## Bước A3: Tài liệu Chức năng (Reverse Engineering)
 
 // turbo
 
-**Objective**: Derive business logic and requirements from the existing implementation.
+**Mục tiêu**: Suy ra logic nghiệp vụ và yêu cầu từ code đã triển khai.
 
-1. **Invoke `[business-analysis]` skill** to:
-   - Analyze the codebase (controllers, services, frontend views) to understand user flows.
-   - **Reverse Engineer** the PRD/Functional Specs:
-     - Identify high-level Epics.
-     - Document implied User Stories & Acceptance Criteria.
-     - Create Use Case definitions for main features.
-2. **Draft Artifacts**:
-   - `docs/020-Requirements/Reverse-Engineered-Specs.md`
-   - `docs/022-User-Stories/Implied-User-Stories.md`
-3. **Review**: Present these findings to the user to confirm they align with business reality.
+1.  **Gọi `[business-analysis]` skill** để:
+    -   Phân tích codebase (controllers, services, frontend views) để hiểu user flows.
+    -   **Reverse Engineer** ra PRD/Functional Specs:
+        -   Nhận diện Epics mức cao.
+        -   Tài liệu User Stories & Acceptance Criteria ngầm hiểu.
+        -   Tạo định nghĩa Use Case cho các tính năng chính.
+2.  **Draft Artifacts**:
+    -   `docs/020-Requirements/Reverse-Engineered-Specs.md`
+    -   `docs/022-User-Stories/Implied-User-Stories.md`
+3.  **Review**: Trình bày cho user để xác nhận khớp với thực tế nghiệp vụ.
 
 ---
 
-## Step A4: Operational & Quality Documentation
+## Bước A4: Tài liệu Vận hành & Chất lượng
 
 // turbo
 
-**Objective**: Document how to run, test, and deploy the system.
+**Mục tiêu**: Tài liệu hóa cách chạy, test và deploy hệ thống.
 
-1. **Invoke `[devops-engineer]` skill** to create:
-   - **Infrastructure**: Document cloud resources, Docker setup (`docs/030-Specs/Architecture/Infrastructure.md`).
-   - **Deployment**: CI/CD pipelines and release process (`docs/030-Specs/Architecture/Deployment.md`).
-   - **Configuration**: Environment variables reference (`docs/030-Specs/Configuration.md`).
-2. **Invoke `[qa-tester]` skill** to create:
-   - **Test Strategy**: Overview of testing tools and approach (`docs/035-QA/Test-Plans/Strategy.md`).
-   - **Coverage Report**: Summary of current test coverage and gaps (`docs/035-QA/Reports/Coverage.md`).
-3. **Invoke `[backend-developer]` skill** to create/update:
-   - **Onboarding**: `docs/060-Manuals/Admin-Guide/Setup-Guide.md` (Prerequisites, installation, running locally).
-   - **Scripts**: Document usage of `package.json` scripts (`docs/060-Manuals/Admin-Guide/Scripts.md`).
+1.  **Gọi `[devops-engineer]` skill** để tạo:
+    -   **Infrastructure**: Tài nguyên cloud, Docker setup (`docs/030-Specs/Architecture/Infrastructure.md`).
+    -   **Deployment**: CI/CD pipelines và quy trình release (`docs/030-Specs/Architecture/Deployment.md`).
+    -   **Configuration**: Tham chiếu biến môi trường (`docs/030-Specs/Configuration.md`).
+2.  **Gọi `[qa-tester]` skill** để tạo:
+    -   **Test Strategy**: Tổng quan công cụ test và phương pháp (`docs/035-QA/Test-Plans/Strategy.md`).
+    -   **Coverage Report**: Tóm tắt độ phủ test hiện tại và các khoảng trống (`docs/035-QA/Reports/Coverage.md`).
+3.  **Gọi `[backend-developer]` skill** để tạo/cập nhật:
+    -   **Onboarding**: `docs/060-Manuals/Admin-Guide/Setup-Guide.md` (Điều kiện cần, cài đặt, chạy local).
+    -   **Scripts**: Tài liệu sử dụng `package.json` scripts (`docs/060-Manuals/Admin-Guide/Scripts.md`).
 
 ---
 
-## Step A5: Project Planning & Strategy
+## Bước A5: Kế hoạch Dự án & Chiến lược
 
 // turbo
 
-**Objective**: Establish high-level strategy and roadmap based on current state.
+**Mục tiêu**: Thiết lập chiến lược mức cao và roadmap dựa trên trạng thái hiện tại.
 
-1. **Invoke `[product-manager]` skill** to:
-   - **Analyze Maturity**: Assess current feature set against typical market standards.
-   - **Reverse Engineer Roadmap**: Draft `docs/010-Planning/Roadmap.md` based on implemented vs. missing features.
-   - **Define Objectives**: Draft `docs/010-Planning/OKRs.md` (Objectives and Key Results) aligned with the project's apparent direction.
-   - **Status Report**: Create a snapshot of current progress (`docs/010-Planning/Sprints/Current-Status.md`).
-2. **Review**: Present these strategic documents to the user for alignment.
+1.  **Gọi `[product-manager]` skill** để:
+    -   **Phân tích độ trưởng thành**: Đánh giá tính năng hiện có so với chuẩn thị trường.
+    -   **Reverse Engineer Roadmap**: Draft `docs/010-Planning/Roadmap.md` dựa trên tính năng đã có vs chưa có.
+    -   **Định nghĩa Mục tiêu**: Draft `docs/010-Planning/OKRs.md` (Objectives and Key Results).
+    -   **Báo cáo Trạng thái**: Tạo snapshot tiến độ hiện tại (`docs/010-Planning/Sprints/Current-Status.md`).
+2.  **Review**: Trình bày các tài liệu chiến lược này cho user.
 
 ---
 
-# MODE B: From Requirements
+# MODE B: Từ Requirements
 
-**Prerequisite**: Existing PRD (from `/brainstorm`).
+**Điều kiện tiên quyết**: Đã có PRD (từ `/brainstorm`).
 
-## Step B1: Create SDD (System Design Document)
+## Bước B1: Tạo SDD (System Design Document)
 
 // turbo
 
 > 💡 **MCP**:
 >
-> - **MUST** use `sequential-thinking` for architectural decisions
-> - Use `context7` with `/vercel/next.js`, `/supabase/supabase` for tech stack research
+> - **PHẢI** dùng `sequential-thinking` cho các quyết định kiến trúc.
+> - Dùng `context7` với `/vercel/next.js`, `/supabase/supabase` để nghiên cứu tech stack.
 
-1. **Analyze Requirements**: Review the PRD/Roadmap. If there are ambiguities, **ASK** the user to clarify.
-2. **Invoke `[lead-architect]` skill** to draft:
-   - High-level system architecture
-   - Technology stack decisions
-   - Component diagram
-   - Data flow overview
-3. Create `draft-sdd.md` artifact
-4. After approval → Save to `docs/030-Specs/Architecture/SDD-{ProjectName}.md`
-
----
-
-## Step B2: Create Epics & Use Cases
-
-// turbo
-
-1. **Invoke `[business-analysis]` skill** to:
-   - Break PRD features into Epics (`docs/022-User-Stories/Epics/`)
-   - Define Use Cases with Mermaid diagrams (`docs/020-Requirements/Use-Cases/`)
-   - **Note**: If requirements are vague, ask for clarification.
-2. Create artifacts for review before saving
+1.  **Phân tích Yêu cầu**: Review PRD/Roadmap. Nếu có mơ hồ, **HỎI** user làm rõ.
+2.  **Gọi `[lead-architect]` skill** để draft:
+    -   Kiến trúc hệ thống mức cao.
+    -   Quyết định Tech stack.
+    -   Component diagram.
+    -   Tổng quan luồng dữ liệu.
+3.  Tạo artifact `draft-sdd.md`.
+4.  Sau khi approve → Lưu vào `docs/030-Specs/Architecture/SDD-{ProjectName}.md`.
 
 ---
 
-## Step B3: Create User Stories
+## Bước B2: Tạo Epics & Use Cases
 
 // turbo
 
-1. **Invoke `[business-analysis]` skill** to create:
-   - User Stories with Acceptance Criteria (`docs/022-User-Stories/Backlog/`)
-   - Complexity estimates
-2. Create `draft-user-stories.md` artifact
-3. After approval → Save
+1.  **Gọi `[business-analysis]` skill** để:
+    -   Chia nhỏ tính năng PRD thành Epics (`docs/022-User-Stories/Epics/`).
+    -   Định nghĩa Use Cases với Mermaid diagrams (`docs/020-Requirements/Use-Cases/`).
+    -   **Note**: Nếu yêu cầu không rõ, hỏi thêm.
+2.  Tạo artifacts để review trước khi lưu.
 
 ---
 
-## Step B4: Create ADRs (Optional)
+## Bước B3: Tạo User Stories
 
 // turbo
 
-**Skip if**: User did not request ADRs.
+1.  **Gọi `[business-analysis]` skill** để tạo:
+    -   User Stories với Acceptance Criteria (`docs/022-User-Stories/Backlog/`).
+    -   Ước lượng độ phức tạp.
+2.  Tạo artifact `draft-user-stories.md`.
+3.  Sau khi approve → Lưu.
 
-1. **Invoke `[lead-architect]` skill** to document technical decisions.
-2. Save to `docs/030-Specs/Architecture/ADR-{NNN}-{Decision}.md`
+---
+
+## Bước B4: Tạo ADRs (Optional)
+
+// turbo
+
+**Bỏ qua nếu**: User không yêu cầu ADRs.
+
+1.  **Gọi `[lead-architect]` skill** để tài liệu hóa các quyết định kỹ thuật.
+2.  Lưu vào `docs/030-Specs/Architecture/ADR-{NNN}-{Decision}.md`.
 
 ---
 
 # Finalize
 
-## Step X: Finalize
+## Bước X: Finalize
 
 // turbo
 
-1. Create/update MOC files
-2. Validate wiki-links and frontmatter
-3. Present summary and suggest next steps (`/ui-ux-design` or `/implement-feature`)
+1.  Tạo/cập nhật các file MOC.
+2.  Validate wiki-links và frontmatter.
+3.  Trình bày tóm tắt và gợi ý bước tiếp theo (`/ui-ux-design` hoặc `/implement-feature`).

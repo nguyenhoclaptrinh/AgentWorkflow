@@ -1,54 +1,64 @@
 ---
-description: General coding workflow for implementing changes, bug fixes, or minor features.
+description: Workflow coding cơ bản để thực hiện thay đổi, sửa lỗi hoặc tính năng nhỏ.
 ---
 
-# Development Workflow
+# Quy trình Phát triển (`/development`)
 
 > [!IMPORTANT]
-> **MANDATORY**: Always read `.agent/rules/documents.md` before creating or modifying any documentation related to development.
+> **BẮT BUỘC**: Luôn đọc `.agent/rules/documents.md` trước khi tạo hoặc sửa đổi tài liệu liên quan.
 
 ---
 
-## Step 1: Analyze & Plan
+## Bước 1: Phân tích & Lên kế hoạch
 
 // turbo
 
-1. Understand the requirement or bug report.
-2. **MUST** use `mcp_sequential-thinking_sequentialthinking` to:
-   - Analyze the existing code structure.
-   - Design the solution.
-   - Identify potential edge cases and impacts.
-3. If the task is complex, create an `implementation_plan.md` artifact.
-4. **WAIT** for user confirmation if the plan involves major architectural changes.
+1.  Hiểu rõ yêu cầu hoặc báo cáo lỗi.
+2.  **BẮT BUỘC** sử dụng `mcp_sequential-thinking_sequentialthinking` để:
+    -   Phân tích cấu trúc code hiện tại.
+    -   Thiết kế giải pháp.
+    -   Xác định các edge cases và rủi ro tiềm ẩn.
+3.  Nếu task phức tạp, tạo artifact `implementation_plan.md`.
+4.  **CHỜ** user xác nhận nếu kế hoạch liên quan đến thay đổi kiến trúc lớn.
 
 ---
 
-## Step 2: Execute Code Changes
+## Bước 2: Khởi tạo Branch
 
 // turbo
 
-1. Implement the planned changes iteratively.
-2. **Backend**: Update models, logic, and APIs as needed.
-3. **Frontend**: Update UI components and state management.
-4. Ensure code follows project standards and linting rules.
+1.  Sử dụng workflow **/git-branch** để tạo branch mới từ `dev`.
+    -   Ví dụ: `fix/bug-login` hoặc `chore/update-deps`.
 
 ---
 
-## Step 3: Verify & Test
+## Bước 3: Thực hiện Code
 
 // turbo
 
-1. Run existing tests to ensure no regressions.
-2. Add new unit or integration tests for the changes.
-3. Perform manual verification (e.g., using the browser tool for UI changes).
-4. **MUST** document proof of work in a `walkthrough.md` artifact if the change is significant.
+1.  Thực hiện các thay đổi code theo kế hoạch.
+2.  **Backend**: Cập nhật models, logic, APIs nếu cần.
+3.  **Frontend**: Cập nhật UI components và state management.
+4.  Đảm bảo code tuân thủ chuẩn clean code và linting của dự án.
 
 ---
 
-## Step 4: Finalize
+## Bước 4: Kiểm thử & Xác minh
 
 // turbo
 
-1. Update related documentation (MOCs, API specs, etc.).
-2. Clean up any temporary files or comments.
-3. Present a summary of changes and verification results.
+1.  Chạy test hiện có để đảm bảo không có regressions.
+2.  Thêm unit hoặc integration tests mới cho các thay đổi.
+3.  Thực hiện verification thủ công (ví dụ: dùng browser tool để check UI).
+4.  **BẮT BUỘC** ghi lại bằng chứng (proof of work) vào artifact `walkthrough.md` nếu thay đổi lớn.
+
+---
+
+## Bước 5: Commit & Finalize
+
+// turbo
+
+1.  Sử dụng workflow **/git-commit** để commit code (Tiếng Việt).
+2.  Cập nhật tài liệu liên quan (MOCs, API specs, ...).
+3.  Don dẹp file tạm.
+4.  Báo cáo tóm tắt các thay đổi và kết quả verification.

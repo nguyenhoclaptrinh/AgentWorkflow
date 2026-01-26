@@ -1,82 +1,82 @@
 ---
-description: Orchestrates breaking down requirements into actionable tasks for implementation.
+description: Điều phối việc chia nhỏ yêu cầu thành các task khả thi để triển khai.
 ---
 
-# Break Tasks Workflow
+# Workflow Chia nhỏ Task (`/break-tasks`)
 
 > [!IMPORTANT]
-> **MANDATORY**: Follow `.agent/rules/documents.md` for all task-related documentation.
+> **BẮT BUỘC**: Tuân thủ `.agent/rules/documents.md` cho mọi tài liệu liên quan đến task.
 
 ---
 
-## MCP Usage Guidelines
+## Hướng dẫn sử dụng MCP
 
-| MCP Tool                                     | When to Use                                               |
-| :------------------------------------------- | :-------------------------------------------------------- |
-| `mcp_sequential-thinking_sequentialthinking` | **REQUIRED** to break down requirements into atomic tasks |
-| `mcp_context7_query-docs`                    | To check best practices for specific technologies         |
-
----
-
-## Step 1: Identify Source Document
-
-1. Locate the source document (PRD, User Story, Feature Spec, or SDD).
-2. If multiple versions exist, ask the user for clarification.
-3. Relevant folders to check:
-   - `docs/020-Requirements/`
-   - `docs/022-User-Stories/`
-   - `docs/030-Specs/`
+| MCP Tool | Khi nào dùng |
+| :--- | :--- |
+| `sequential-thinking` | **BẮT BUỘC** để chia nhỏ yêu cầu thành các atomic tasks |
+| `context7_query-docs` | Để check best practices cho các công nghệ cụ thể |
 
 ---
 
-## Step 2: Analyze Requirements
+## Bước 1: Xác định Tài liệu Nguồn
+
+1.  Xác định tài liệu nguồn (PRD, User Story, Feature Spec, hoặc SDD).
+2.  Nếu có nhiều phiên bản, hỏi user để làm rõ.
+3.  Các folder liên quan cần check:
+    -   `docs/020-Requirements/`
+    -   `docs/022-User-Stories/`
+    -   `docs/030-Specs/`
+
+---
+
+## Bước 2: Phân tích Yêu cầu
 
 // turbo
 
-1. **Invoke `[business-analysis]` skill** to extract key features and acceptance criteria.
-2. Use `sequential-thinking` to:
-   - Identify technical dependencies.
-   - Separate backend, frontend, and QA requirements.
-   - Spot ambiguous or missing details.
-3. List any clarifying questions for the user.
-4. **WAIT** for user clarification if needed.
+1.  **Gọi `[business-analysis]` skill** để trích xuất các tính năng chính và acceptance criteria.
+2.  Sử dụng `sequential-thinking` để:
+    -   Nhận diện các phụ thuộc kỹ thuật (dependencies).
+    -   Tách biệt yêu cầu backend, frontend, và QA.
+    -   Phát hiện các chi tiết mơ hồ hoặc thiếu sót.
+3.  Liệt kê các câu hỏi cần làm rõ cho user.
+4.  **CHỜ** user giải đáp nếu cần.
 
 ---
 
-## Step 3: Atomic Task Breakdown
+## Bước 3: Phân rã Atomic Task
 
 // turbo
 
-> 💡 **MCP**: **MUST** use `sequential-thinking` here to ensure tasks are atomic and manageable.
+> 💡 **MCP**: **PHẢI** dùng `sequential-thinking` ở đây để đảm bảo task nhỏ và dễ quản lý (atomic).
 
-1. **Invoke `[lead-architect]` skill** to create a structured task list.
-2. Group tasks by component or phase (e.g., Database, API, Logic, UI, Testing).
-3. For each task, include:
-   - Goal/Description.
-   - Acceptance Criteria.
-   - Estimated complexity (if applicable).
-4. Create a `task-breakdown.md` artifact representing the proposed sequence.
+1.  **Gọi `[lead-architect]` skill** để tạo danh sách task có cấu trúc.
+2.  Nhóm task theo component hoặc giai đoạn (VD: Database, API, Logic, UI, Testing).
+3.  Với mỗi task, bao gồm:
+    -   Mục tiêu/Mô tả.
+    -   Acceptance Criteria.
+    -   Độ phức tạp ước tính (nếu áp dụng).
+4.  Tạo artifact `task-breakdown.md` đại diện cho trình tự đề xuất.
 
 ---
 
-## Step 4: Finalize Task Documentation
+## Bước 4: Hoàn tất Tài liệu Task
 
 // turbo
 
-1. After user approves the `task-breakdown.md` artifact:
-2. Update the `task.md` of the current session or create a new task file in `docs/050-Tasks/`.
-3. If creating a new file, follow standard naming: `docs/050-Tasks/Task-{FeatureName}.md`.
-4. Update `docs/050-Tasks/Tasks-MOC.md`.
-5. Present the finalized task list to the user.
+1.  Sau khi user approve `task-breakdown.md`:
+2.  Cập nhật `task.md` của session hiện tại hoặc tạo file task mới trong `docs/050-Tasks/`.
+3.  Nếu tạo file mới, tuân thủ naming: `docs/050-Tasks/Task-{FeatureName}.md`.
+4.  Cập nhật `docs/050-Tasks/Tasks-MOC.md`.
+5.  Trình bày danh sách task cuối cùng cho user.
 
 ---
 
 ## Quick Reference
 
-| Role               | Skill                | Responsibility                          |
-| :----------------- | :------------------- | :-------------------------------------- |
-| Product Manager    | `product-manager`    | Requirement validation & prioritization |
-| Lead Architect     | `lead-architect`     | Technical breakdown & dependencies      |
-| Developer          | `backend-developer`  | Backend/API specific tasks              |
-| Frontend Developer | `frontend-developer` | UI/UX specific tasks                    |
-| QA Tester          | `qa-tester`          | Verification & Edge case tasks          |
+| Vai trò | Skill | Trách nhiệm |
+| :--- | :--- | :--- |
+| Product Manager | `product-manager` | Validation yêu cầu & ưu tiên |
+| Lead Architect | `lead-architect` | Phân rã kỹ thuật & dependencies |
+| Developer | `backend-developer` | Backend/API tasks |
+| Frontend Developer | `frontend-developer` | UI/UX tasks |
+| QA Tester | `qa-tester` | Verification & Edge case tasks |

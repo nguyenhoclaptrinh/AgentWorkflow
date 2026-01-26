@@ -1,96 +1,96 @@
 ---
-description: Sets up project structure, installs dependencies, and configures environment based on architectural specs.
+description: Thiết lập cấu trúc dự án, cài đặt dependencies, và cấu hình môi trường dựa trên spec kiến trúc.
 ---
 
-# Bootstrap Workflow
+# Workflow Khởi tạo Dự án (Bootstrap)
 
 > [!IMPORTANT]
-> **Prerequisite**: Ensure SDD exists in `docs/030-Specs/Architecture/`.
+> **Điều kiện tiên quyết**: Đảm bảo SDD đã tồn tại trong `docs/030-Specs/Architecture/`.
 
 ---
 
-## MCP Usage Guidelines
+## Hướng dẫn sử dụng MCP
 
-| MCP Tool                          | When to Use                        |
-| :-------------------------------- | :--------------------------------- |
-| `mcp_context7_resolve-library-id` | Find correct package names         |
-| `mcp_context7_query-docs`         | Research installation/config steps |
+| MCP Tool | Khi nào dùng |
+| :--- | :--- |
+| `context7_resolve-library-id` | Tìm tên package chính xác |
+| `context7_query-docs` | Nghiên cứu các bước cài đặt/cấu hình |
 
 ---
 
-## Step 1: Framework Initialization & Structure
+## Bước 1: Khởi tạo Framework & Cấu trúc
 
 // turbo
 
-1. **Invoke `[lead-architect]` skill** to:
-   - Define the project root structure (Monorepo vs Polyrepo)
-   - Initialize the base project (e.g., `git init`, `npx create-next-app`)
-   - Create the directory skeleton based on SDD
-2. **WAIT** for initialization
+1.  **Gọi `[lead-architect]` skill** để:
+    -   Định nghĩa cấu trúc root (Monorepo vs Polyrepo).
+    -   Khởi tạo base project (VD: `git init`, `npx create-next-app`).
+    -   Tạo khung thư mục dựa trên SDD.
+2.  **CHỜ** quá trình khởi tạo hoàn tất.
 
 ---
 
-## Step 2: Maintenance & Quality Engineering Tools
+## Bước 2: Công cụ Maintenance & Chất lượng
 
 // turbo
 
-> 💡 **Role**: DevOps Engineer ensures the "Development Experience" (DX) is solid.
+> 💡 **Vai trò**: DevOps Engineer đảm bảo "Trải nghiệm Phát triển" (DX) tốt.
 
-1. **Invoke `[devops-engineer]` skill** to install & configure:
-   - **Quality Tools**: ESLint, Prettier, TypeScript config
-   - **Git Hooks**: Husky, Lint-staged, Commitlint
-   - **CI/CD**: Github Actions (basic build/test)
-2. Verify: Run `npm run lint` and ensure hooks fire on commit.
+1.  **Gọi `[devops-engineer]` skill** để cài đặt & cấu hình:
+    -   **Quality Tools**: ESLint, Prettier, TypeScript config.
+    -   **Git Hooks**: Husky, Lint-staged, Commitlint.
+    -   **CI/CD**: Github Actions (build/test cơ bản).
+2.  Verify: Chạy `npm run lint` và đảm bảo hooks hoạt động khi commit.
 
 ---
 
-## Step 3: Frontend Setup
+## Bước 3: Setup Frontend
 
 // turbo
 
-> 💡 **Role**: Frontend Developer manages the UI/Client side.
+> 💡 **Vai trò**: Frontend Developer quản lý phía UI/Client.
 
-1. **Invoke `[frontend-developer]` skill** to:
-   - **UI Ecosystem**: Install TailwindCSS, Radix/Shadcn, Framer Motion
-   - **State Manager**: Zustand/Jotai/Redux
-   - **Structure**: Setup `src/components`, `src/hooks`, `src/pages` (or `app`)
-   - **Assets**: Configure font loaders, image optimization
-2. **WAIT** for installation
+1.  **Gọi `[frontend-developer]` skill** để:
+    -   **UI Ecosystem**: Cài đặt TailwindCSS, Radix/Shadcn, Framer Motion.
+    -   **State Manager**: Zustand/Jotai/Redux.
+    -   **Structure**: Setup `src/components`, `src/hooks`, `src/pages` (hoặc `app`).
+    -   **Assets**: Cấu hình font loaders, image optimization.
+2.  **CHỜ** quá trình cài đặt.
 
 ---
 
-## Step 4: Backend Setup
+## Bước 4: Setup Backend
 
 // turbo
 
-> 💡 **Role**: Backend Developer manages the Data/Server side.
+> 💡 **Vai trò**: Backend Developer quản lý phía Data/Server.
 
-1. **Invoke `[backend-developer]` skill** to:
-   - **Database**: Setup Prisma/Drizzle/Supabase client
-   - **API**: Configure API routes/Server Actions
-   - **Validation**: Install Zod/Valibot
-   - **Environment**: Create `.env.example` and validate `.env` keys
-2. **WAIT** for installation
+1.  **Gọi `[backend-developer]` skill** để:
+    -   **Database**: Setup Prisma/Drizzle/Supabase client.
+    -   **API**: Cấu hình API routes/Server Actions.
+    -   **Validation**: Cài đặt Zod/Valibot.
+    -   **Environment**: Tạo `.env.example` và validate `.env` keys.
+2.  **CHỜ** quá trình cài đặt.
 
 ---
 
-## Step 5: Final Validation
+## Bước 5: Validation Cuối cùng
 
 // turbo
 
-1. **Invoke `[devops-engineer]` skill** to:
-   - Run full build `npm run build`
-   - Test Type-checking `tsc --noEmit`
-2. **Invoke `[product-manager]`** to update Roadmap status to "In Progress"
+1.  **Gọi `[devops-engineer]` skill** để:
+    -   Chạy full build `npm run build`.
+    -   Test Type-checking `tsc --noEmit`.
+2.  **Gọi `[product-manager]`** để cập nhật trạng thái Roadmap sang "In Progress".
 
 ---
 
 ## Quick Reference
 
-| Step | Skill              | Action                      |
-| :--- | :----------------- | :-------------------------- |
-| 1    | lead-architect     | Init Framework & Structure  |
-| 2    | devops-engineer    | Husky, Linter, CI/CD        |
-| 3    | frontend-developer | Tailwind, Components, State |
-| 4    | backend-developer  | DB, API, Env                |
-| 5    | devops-engineer    | Final Build Check           |
+| Bước | Skill | Hành động |
+| :--- | :--- | :--- |
+| 1 | lead-architect | Framework & Structure Init |
+| 2 | devops-engineer | Husky, Linter, CI/CD |
+| 3 | frontend-developer | Tailwind, Components, State |
+| 4 | backend-developer | DB, API, Env |
+| 5 | devops-engineer | Final Build Check |

@@ -1,64 +1,74 @@
 ---
-description: Workflow for safely customizing Agent rules and workflows with impact analysis and user confirmation.
+description: Workflow để tùy chỉnh Rule/Workflow an toàn, có phân tích tác động và xác nhận của user.
 ---
 
-# Custom Behavior Workflow
+# Workflow Tùy chỉnh Hành vi (Custom Behavior)
 
-## Tool Usage Guidelines
+## Hướng dẫn sử dụng công cụ
 
-| Tool            | When to Use                                          | Example Query                                                   |
-| --------------- | ---------------------------------------------------- | --------------------------------------------------------------- |
-| `find_by_name`  | Step 1: To find if a rule/workflow already exists    | `Pattern="*security*", SearchDirectory=".agent/rules"`          |
-| `view_file`     | Step 2: To read the existing content for comparison  | `AbsolutePath="/.../.agent/rules/security.md"`                  |
-| `notify_user`   | Step 3: To present analysis and ask for confirmation | `Message="I found an existing rule. Do you want to overwrite?"` |
-| `write_to_file` | Step 4: To create or overwrite the file              | `Overwrite=true`                                                |
+| Tool | Khi nào dùng | Ví dụ |
+| :--- | :--- | :--- |
+| `find_by_name` | Bước 1: Tìm xem rule/workflow đã tồn tại chưa | `Pattern="*security*", SearchDirectory=".agent/rules"` |
+| `view_file` | Bước 2: Đọc nội dung hiện tại để so sánh | `AbsolutePath="/.../.agent/rules/security.md"` |
+| `notify_user` | Bước 3: Trình bày phân tích và hỏi xác nhận | `Message="Em tìm thấy rule cũ. Anh có muốn ghi đè không?"` |
+| `write_to_file` | Bước 4: Tạo hoặc ghi đè file | `Overwrite=true` |
 
-## Step 1: Identification & Search
+---
+
+## Bước 1: Nhận diện & Tìm kiếm
 
 // turbo
 
-> 💡 **Tip**: Don't assume the file doesn't exist. Always search first.
+> 💡 **Tip**: Đừng đoán là file không tồn tại. Luôn tìm kiếm trước.
 
-1.  Analyze the user's request to identify the _intent_ (e.g., "Add stricter linting", "Skip tests in deployment").
-2.  Search for existing Rules or Workflows that might already cover this.
-    - Rules: search in `.agent/rules/`
-    - Workflows: search in `.agent/workflows/`
+1.  Phân tích yêu cầu của user để xác định _ý định_ (VD: "Thêm linting chặt hơn", "Bỏ qua test khi deploy").
+2.  Tìm kiếm Rule hoặc Workflow hiện có có thể liên quan.
+    -   Rules: tìm trong `.agent/rules/`
+    -   Workflows: tìm trong `.agent/workflows/`
 
-## Step 2: Impact Analysis
+---
 
-> 💡 **Tip**: If a file exists, you MUST read it and compare it with the request.
+## Bước 2: Phân tích Tác động
 
-**Condition A: Target does NOT exist:**
+> 💡 **Tip**: Nếu file tồn tại, PHẢI đọc và so sánh với yêu cầu.
 
-1.  Verify if a template exists in `.agent/assets/` or `references/` that could be used as a base.
-2.  Draft the new content in your memory.
+**Tình huống A: Mục tiêu CHƯA tồn tại:**
 
-**Condition B: Target ALREADY exists:**
+1.  Kiểm tra xem có template nào trong `.agent/assets/` hoặc `references/` dùng làm base được không.
+2.  Draft nội dung mới trong bộ nhớ.
 
-1.  **Read** the current content of the file.
-2.  **Compare** the User's request vs the Current Content.
-3.  **Identify Conflicts**:
-    - Will this break existing constraints?
-    - Is this a "Breaking Change" or just an "Enhancement"?
-4.  **Formulate Recommendation**:
-    - _Adapt_: "I recommend creating a new file `custom-X.md` to avoid breaking standard X."
-    - _Override_: "This helps matches your specific need, but removes the safety check Y."
+**Tình huống B: Mục tiêu ĐÃ tồn tại:**
 
-## Step 3: User Confirmation
+1.  **Đọc** nội dung hiện tại của file.
+2.  **So sánh** yêu cầu của User vs Nội dung hiện tại.
+3.  **Nhận diện Xung đột**:
+    -   Việc này có phá vỡ ràng buộc hiện có không?
+    -   Đây là "Breaking Change" hay chỉ là "Enhancement"?
+4.  **Đưa ra Khuyến nghị**:
+    -   _Thích ứng_: "Em đề xuất tạo file mới `custom-X.md` để tránh phá vỡ chuẩn X."
+    -   _Ghi đè_: "Việc này khớp nhu cầu của anh, nhưng sẽ bỏ qua bước kiểm tra an toàn Y."
 
-> 💡 **Tip**: You must be explicit about what will change.
+---
 
-1.  **Notify User** with a summary of your analysis.
-    - If **New**: "I will create a new rule [filename] that [does X]."
-    - If **modifying**: "I will modify [filename]. \n**Current**: [Summary of old]\n**Proposed**: [Summary of new]\n**Impact**: [Warning about side effects]"
-2.  **WAIT** for user approval.
+## Bước 3: User Xác nhận
 
-## Step 4: Execution
+> 💡 **Tip**: Phải nói rõ những gì sẽ thay đổi.
 
-1.  Perform the file operation (`write_to_file` or `replace_file_content`).
-2.  **Validate**: Read the file back to ensure syntax is correct (Markdown/YAML frontmatter).
-3.  **Register**: If it's a rule, remind the user if they need to manually activate it (unless it's `always_on`).
+1.  **Thông báo User** tóm tắt phân tích.
+    -   Nếu **Mới**: "Em sẽ tạo rule mới [filename] để [làm X]."
+    -   Nếu **Sửa đổi**: "Em sẽ sửa [filename]. \n**Hiện tại**: [Tóm tắt cũ]\n**Đề xuất**: [Tóm tắt mới]\n**Tác động**: [Cảnh báo side effects]"
+2.  **CHỜ** user approve.
 
-## Step 5: Verification
+---
 
-1. Check if the customization works as expected (if possible, by running a dry-run or asking user to test).
+## Bước 4: Thực thi
+
+1.  Thực hiện thao tác file (`write_to_file` hoặc `replace_file_content`).
+2.  **Validate**: Đọc lại file để đảm bảo đúng cú pháp (Markdown/YAML frontmatter).
+3.  **Đăng ký**: Nếu là rule, nhắc user xem họ có cần kích hoạt thủ công không (trừ khi là `always_on`).
+
+---
+
+## Bước 5: Verification
+
+1.  Kiểm tra xem tùy chỉnh có hoạt động như mong đợi không (nếu được, chạy dry-run hoặc nhờ user test).
