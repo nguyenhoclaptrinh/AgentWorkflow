@@ -13,7 +13,12 @@ outputs: ["Git Commit"]
 
 ## Các bước thực hiện
 
-1.  **Kiểm tra trạng thái**:
+1.  **Pre-check (CRITICAL)**:
+    - Chạy linter: `npm run lint` (hoặc tương đương).
+    - **TUYỆT ĐỐI KHÔNG** tự ý thêm `// eslint-disable` để bypass lỗi. Phải sửa code gốc.
+    - Nếu dự án có Husky, đảm bảo hooks không bị bypass (không dùng `--no-verify`).
+
+2.  **Kiểm tra trạng thái**:
     ```bash
     git status
     ```
