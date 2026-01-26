@@ -1,0 +1,66 @@
+# /paste - Paste image from clipboard into Gemini CLI
+description = "Paste an image from user clipboard for Gemini to analyze"
+
+prompt = """
+
+The user wants to paste an image from their system clipboard and answer user query
+<task>
+{{args}}
+</task>
+
+## Clipboard Image Paste
+Image Result:
+!{gk paste-image}
+
+
+### Instructions
+
+1. **Use the `paste_image` tool** from the clipboard extension to capture the image from the user's clipboard.
+
+2. **If successful**, inform the user:
+   - Confirm the image was captured
+   - Show the file path where it was saved
+   - Show the file size
+   - Ask what they would like to do with the image
+
+3. **If failed**, help the user:
+   - Explain why it failed (no image, tool not installed, etc.)
+   - Provide the appropriate solution based on their platform
+   - Suggest they copy an image first and try again
+
+### Example Success Response
+
+```
+Image captured from clipboard!
+
+Saved to: "...\\gemini-clipboard\\clipboard-image-123456.png"
+Size: 45.2 KB
+
+What would you like me to do with this image?
+- Analyze its contents and describe what I see
+- Extract text (OCR) from the image
+- Identify UI/UX issues (for screenshots)
+- Generate code based on the design
+- Something else?
+```
+
+### Example Failure Response
+
+```
+I couldn't capture an image from your clipboard.
+
+This usually means:
+- No image is currently copied (clipboard might contain text instead)
+- The clipboard tool isn't available on your system
+
+To fix this:
+1. Copy an image first (screenshot, right-click > Copy Image, etc.)
+2. Run /paste again immediately after copying
+
+Need help taking a screenshot?
+- Windows: Win+Shift+S (Snipping Tool)
+- macOS: Cmd+Shift+4 (area) or Cmd+Shift+3 (full screen)
+- Linux: Use your screenshot tool or Print Screen key
+```
+
+"""

@@ -1,0 +1,96 @@
+{
+  "tools": {
+    "enableHooks": true,
+    "allowed": [
+      "list_directory",
+      "read_file",
+      "glob",
+      "search_file_content",
+      "replace",
+      "write_file",
+      "web_fetch",
+      "save_memory",
+      "write_todos",
+      "google_web_search",
+      "run_shell_command"
+    ],
+    "shell": {
+      "enableInteractiveShell": false, // True for Gemini CLI, False for non-Gemini apps
+      "inactivityTimeout": 60,
+      "showColor": true,
+      "autoApprove": [
+        "git",
+        "npm",
+        "npx",
+        "npm install",
+        "npm run build"
+      ]
+    }
+  },
+  "hooks": {
+    "enabled": true,
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "name": "gk-session-init",
+            "type": "command",
+            "command": "node .gemini/hooks/gk-session-init.cjs",
+            "description": "Initialize session (fires exactly once at startup)",
+            "timeout": 30000
+          }
+        ]
+      }
+    ],
+    "BeforeAgent": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "name": "gk-session-init",
+            "type": "command",
+            "command": "node .gemini/hooks/gk-session-init.cjs",
+            "description": "Initialize session on first prompt",
+            "timeout": 30000
+          },
+          {
+            "name": "gk-dev-rules-reminder",
+            "type": "command",
+            "command": "node .gemini/hooks/gk-dev-rules-reminder.cjs",
+            "description": "Inject dev rules, session context, and plan context",
+            "timeout": 10000
+          }
+        ]
+      }
+    ],
+    "BeforeModel": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "name": "gk-session-init-capture-hash",
+            "type": "command",
+            "command": "node .gemini/hooks/gk-session-init.cjs",
+            "description": "Capture projectHash from llm_request (runs once)",
+            "timeout": 5000
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "name": "gk-session-end",
+            "type": "command",
+            "command": "node .gemini/hooks/gk-session-end.cjs",
+            "description": "Track session completion and update metrics",
+            "timeout": 10000
+          }
+        ]
+      }
+    ]
+  }
+}

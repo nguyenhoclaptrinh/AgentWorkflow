@@ -1,0 +1,10 @@
+{
+  "name": "research",
+  "version": "1.0.0",
+  "description": "This skill should be used for autonomous multi-step research, technical analysis, and solution planning. Activates when users need comprehensive investigation of technologies, best practices, security considerations, or implementation strategies. Produces structured research reports with verified sources, latest-approach code patterns for planners, and actionable recommendations.",
+  "license": "MIT",
+  "contextFileName": [
+    "SKILL.md",
+    "references/*.md"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "plan": {
+    "namingFormat": "{date}-{issue}-{slug}",
+    "dateFormat": "YYMMDD-HHmm",
+    "issuePrefix": "GH-",
+    "reportsDir": "reports",
+    "resolution": {
+      "order": [
+        "session",
+        "branch"
+      ],
+      "branchPattern": "(?:feat|fix|chore|refactor|docs)/(?:[^/]+/)?(.+)"
+    }
+  },
+  "paths": {
+    "docs": "docs",
+    "plans": "plans"
+  },
+  "locale": {
+    "responseLanguage": null
+  },
+  "trust": {
+    "passphrase": null,
+    "enabled": false
+  },
+  "project": {
+    "type": "auto",
+    "packageManager": "auto",
+    "framework": "auto"
+  },
+  "assertions": [],
+  "spawn": {
+    "agentsDir": ".gemini/agents",
+    "defaultModel": "gemini-2.5-flash",
+    "music": false
+  },
+  "notifications": {
+    "discord": {
+      "enabled": true,
+      "notifyMainAgent": true,
+      "notifySubAgentRoles": [
+        "code-executor",
+        "git-manager"
+      ]
+    }
+  }
+}

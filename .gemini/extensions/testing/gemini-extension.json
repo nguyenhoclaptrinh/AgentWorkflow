@@ -1,0 +1,10 @@
+{
+  "name": "testing",
+  "version": "1.0.0",
+  "description": "Comprehensive testing skill for validating code changes. Covers unit testing (Vitest, Jest), integration testing, E2E testing (Playwright, Cypress), component testing, mocking (MSW, vi.mock), async/hook testing, CI/CD integration, and code coverage. Use after code changes or code-executor to ensure quality.",
+  "license": "MIT",
+  "contextFileName": [
+    "SKILL.md",
+    "references/*.md"
+  ]
+}

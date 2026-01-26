@@ -1,0 +1,10 @@
+{
+  "name": "planning",
+  "version": "1.0.0",
+  "description": "Create detailed implementation plans from raw input (research reports, feature requests, requirements). Produces master plan (plan.md) with overview, phases table, architecture, and individual phase files (phase-XX-name.md) with actionable tasks, code snippets, deliverables, and validation criteria.",
+  "license": "MIT",
+  "contextFileName": [
+    "SKILL.md",
+    "references/*.md"
+  ]
+}

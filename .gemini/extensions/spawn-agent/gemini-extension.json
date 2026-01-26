@@ -1,0 +1,92 @@
+{
+  "name": "spawn-agent",
+  "version": "2.0.0-mvp",
+  "description": "Spawn and manage sub-agents with BM25 search for optimal agent-skill combinations. Supports intent/domain/complexity detection, synonym expansion, and elevator music.",
+  "author": "GemKit MVP",
+  "license": "MIT",
+  "contextFileName": [
+    "SKILL.md",
+    "references/*.md"
+  ],
+  "tools": [
+    {
+      "name": "search_agent",
+      "description": "Search for optimal agent-skill combination using BM25 algorithm with intent/domain/complexity detection",
+      "command": "gk agent search",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Task description to find best agent-skill combination"
+          },
+          "limit": {
+            "type": "number",
+            "description": "Maximum number of results (default: 5)"
+          }
+        },
+        "required": ["query"]
+      }
+    },
+    {
+      "name": "spawn_agent",
+      "description": "Spawn a sub-agent with specified profile and skills",
+      "command": "gk agent spawn",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "prompt": {
+            "type": "string",
+            "description": "Task description for the sub-agent"
+          },
+          "agent": {
+            "type": "string",
+            "description": "Agent profile: researcher, planner, code-executor, debugger, tester, code-reviewer, ui-ux-designer, docs-manager, git-manager"
+          },
+          "skills": {
+            "type": "string",
+            "description": "Comma-separated skills (e.g., research, backend-development, debugging)"
+          },
+          "model": {
+            "type": "string",
+            "description": "Model override: gemini-2.5-flash, gemini-2.5-pro, gemini-3-flash-preview"
+          },
+          "music": {
+            "type": "boolean",
+            "description": "Enable elevator music while waiting"
+          }
+        },
+        "required": ["prompt"]
+      }
+    },
+    {
+      "name": "list_agents",
+      "description": "List all available agent profiles with their skills and models",
+      "command": "gk agent list",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "json": {
+            "type": "boolean",
+            "description": "Output as JSON"
+          }
+        }
+      }
+    },
+    {
+      "name": "agent_info",
+      "description": "Get detailed information about a specific agent profile",
+      "command": "gk agent info",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Agent profile name"
+          }
+        },
+        "required": ["name"]
+      }
+    }
+  ]
+}

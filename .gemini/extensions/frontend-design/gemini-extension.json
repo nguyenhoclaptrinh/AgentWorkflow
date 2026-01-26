@@ -1,0 +1,10 @@
+{
+  "name": "frontend-design",
+  "version": "1.0.0",
+  "description": "This skill should be used for creating distinctive, production-grade frontend interfaces. Activates when users request web components, pages, or applications. Generates creative, polished code with exceptional aesthetics, modern CSS features (View Transitions, Container Queries), purposeful animations, and avoids generic AI aesthetics. Includes code patterns for planners.",
+  "license": "MIT",
+  "contextFileName": [
+    "SKILL.md",
+    "references/*.md"
+  ]
+}
