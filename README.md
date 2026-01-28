@@ -24,6 +24,7 @@ Các workflow atomic tương tác với Git.
 | **Cập nhật Code** | `/git-sync` | **MỚI**: Kéo code từ `dev`, rebase và xử lý conflict an toàn. | `git-sync` (trước khi start task) |
 | **Tạo Branch** | `/git-branch` | Tạo branch mới (Có kiểm tra Dirty workspace). | `feature/login-page` |
 | **Commit Code** | `/git-commit` | Commit chuẩn Conventional Commits (Có Self-Review). | `feat: thêm nút đăng nhập` |
+| **Merge Code** | `/git-merge` | **Fast Track**: Merge feature vào dev với Safety Checks (Lint/Test). | `git-merge` (Solo/Small project) |
 | **Tạo PR** | `/git-pr` | Tạo PR (Có kiểm tra Auth GitHub CLI). | PR: Login Feature |
 
 ---
@@ -116,4 +117,3 @@ Các workflow atomic tương tác với Git.
 ### Nguyên tắc Vàng
 1.  **Atomic AI Flow (Task Nhỏ)**: Tin tưởng AI, nhưng luôn kiểm tra kết quả cuối cùng.
 2.  **User Full Flow (Task Lớn)**: Đừng để AI đi quá xa mà không kiểm soát. Dùng các "Gate" (Review) để điều chỉnh hướng đi.
-
