@@ -26,3 +26,4 @@ docs/
 # .agent/skills/
 # .agent/assets/
 # README.md
+docker-compose.yml
