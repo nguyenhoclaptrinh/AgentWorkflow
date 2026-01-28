@@ -1,15 +1,11 @@
 ---
 description: Hỏi đáp về Codebase, Kiến trúc, hoặc Kiến thức chung.
-type: informational
-required_skills: [research, backend-developer, frontend-developer]
-inputs: ["Question"]
-outputs: ["Answer", "Action Suggestion"]
 ---
 
 # Quy trình Hỏi đáp (`/ask`)
 
 > [!NOTE]
-> Workflow này KHÔNG thay đổi code. Nó chỉ phân tích và trả lời câu hỏi.
+> Workflow này KHÔNG thay đổi code hoặc tài liệ. Nó chỉ phân tích và trả lời câu hỏi.
 
 ## Bước 1: Phân tích Câu hỏi
 

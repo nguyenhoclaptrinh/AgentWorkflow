@@ -76,6 +76,7 @@ Các workflow atomic tương tác với Git.
 | :--- | :--- | :--- | :--- |
 | `/code-review` | Diff/Branch | Review Comments | "Review PR login fix xem có lỗi gì không" |
 | `/project-review` | Codebase | Audit Report | "Đánh giá lại toàn bộ kiến trúc và bảo mật" |
+| `/review-docs` | Artifacts/Docs | Review Report | "Review logic plan này", "Check grammar file manual" |
 
 ---
 
