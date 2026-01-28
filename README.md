@@ -52,6 +52,7 @@ Các workflow atomic tương tác với Git.
 | Workflow | Input | Output | Ví dụ |
 | :--- | :--- | :--- | :--- |
 | `/brainstorm` | Ý tưởng (Idea) | Roadmap, PRD | "Lên ý tưởng cho App nuôi heo" |
+| `/plan` | Requirements | Plan & Tasks | "Lên plan chi tiết cho feature X" |
 | `/research` | Topic/Câu hỏi | Báo cáo nghiên cứu sâu | "Tìm hiểu kiến trúc Microservices" |
 | `/break-tasks` | PRD/Specs | Danh sách Task (Jira/Markdown) | "Chia nhỏ PRD module Kho thành task" |
 | `/bootstrap` | Architecture Spec | Project Init, Config | "Khởi tạo dự án Next.js + NestJS" |
