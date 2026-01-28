@@ -1,1 +1,28 @@
+# External Projects (Do not track)
 farmtrace*
+
+# Standard Ignores
+node_modules/
+.env
+.DS_Store
+dist/
+build/
+Thumbs.db
+
+# Project Specific
+docs/
+
+# Agent System (Private Data)
+.agent/brain/
+.agent/memory/
+.agent/chats/
+.agent/logs/
+.agent/data/
+
+# Agent System (Shared Configuration)
+# Note: These are allowed by default, but explicitly listed for clarity
+# .agent/rules/
+# .agent/workflows/
+# .agent/skills/
+# .agent/assets/
+# README.md

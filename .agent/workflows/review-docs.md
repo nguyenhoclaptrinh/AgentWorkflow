@@ -54,7 +54,7 @@ Workflow này hướng dẫn AI review các file tài liệu (`docs/`) và Agent
 ### 5. Báo cáo & Sửa lỗi
 - **Action**:
     -   Nếu lỗi nhỏ (typo, format): **Tự động sửa** ngay lập tức.
-    -   Nếu lỗi logic/kỹ thuật: **Báo cáo** cho user qua `notify_user` hoặc comment trong file (nếu được yêu cầu).
+    -   Nếu lỗi logic/kỹ thuật: **Báo cáo** cho user qua `notify_user` hoặc tạo artifact báo cáo.
 - **Output**: Tổng hợp kết quả review (Approved / Needs Changes) và danh sách các mục đã sửa.
 
 ## Ví dụ Sử dụng
