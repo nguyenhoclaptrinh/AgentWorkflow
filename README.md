@@ -36,14 +36,18 @@ Các workflow atomic tương tác với Git.
 | :--- | :--- | :--- | :--- |
 | `/development` | Procedure | Code task nhỏ. **Tự động Sync code và Retry nếu test lỗi.** | "Sửa lỗi typo", "Đổi màu button" |
 | `/implement-feature` | Procedure | Triển khai tính năng trọn gói. **Có Gate chặn bắt buộc User duyệt.** | "Thêm module Thanh toán VNPAY" |
+| `/feature-development` | Procedure | (Global Alternative) Quy trình phát triển tính năng cơ bản. | "Làm tính năng X đơn giản" |
 | `/code` | Direct Executor | Engine thực thi trọn gói. **Tự động sửa lỗi (Self-Healing) khi failed.** | "Refactor thư mục `utils`", "Viết test coverage 80%" |
 | `/cook` | Interactive | Engine thực thi từng bước, cộng tác chặt chẽ với User. | "Cùng debug lỗi render React", "Hướng dẫn setup ENV" |
+| `/task-to-pr-workflow` | Procedure | Quy trình từ Task -> Pull Request. | "Hoàn thành task JIRA-123" |
 
 ### B. Maintenance & Refactoring (Mới)
 | Workflow | Loại | Mô tả | Ví dụ |
 | :--- | :--- | :--- | :--- |
 | `/hotfix` | Procedure | **Quy trình khẩn cấp**: Sửa lỗi Production, bypass research sâu, merge thẳng vào Main & Dev. | "Sửa gấp lỗi 500 khi checkout" |
+| `/bug-fix` | Procedure | (Global) Quy trình sửa lỗi chuẩn mực. | "Fix bug hiển thị sai ngày" |
 | `/refactor` | Procedure | Chuyên dụng cho việc dọn dẹp code, không thay đổi logic, đảm bảo test pass. | "Tách hàm xử lý date ra file riêng" |
+| `/lint-format` | Procedure | Chuẩn hóa code style. | "Format lại toàn bộ src" |
 
 ---
 
@@ -66,8 +70,11 @@ Các workflow atomic tương tác với Git.
 | :--- | :--- | :--- | :--- |
 | `/qa` | `qa-tester` | Lên kế hoạch test (Test Plans) và viết Test Cases. | "Lập Test Plan cho màn hình Login" |
 | `/gen-tests` | `qa-tester` | Sinh code test tự động (Unit/E2E). **Có Auto-Run & Self-Healing.** | "Tạo unit test cho `AuthService`" |
+| `/unit-test-generation` | `qa-tester` | (Global) Sinh unit test chuyên biệt. | "Tạo test cho utils.ts" |
+| `/integration-test` | `qa-tester` | Chạy test tích hợp. | "Test luồng Order -> Payment" |
 | `/debug` | `tester`, `coder` | Quy trình debug khoa học (Giả thuyết -> Chứng minh -> Fix). | "Tìm nguyên nhân lỗi không lưu session" |
 | `/documentation` | `architect` | Dịch ngược code ra tài liệu hoặc viết Specs từ PRD. | "Tạo API Doc cho `ProductController`" |
+| `/rebuild-design-docs` | `architect` | Tái tạo lại tài liệu thiết kế từ code hiện tại. | "Reverse Engineer lại sơ đồ DB" |
 | `/ui-ux-design` | `designer` | Quy trình thiết kế, prototyping. | "Thiết kế UI Dashboard Admin" |
 
 ---
@@ -77,7 +84,9 @@ Các workflow atomic tương tác với Git.
 | Workflow | Input | Output | Ví dụ |
 | :--- | :--- | :--- | :--- |
 | `/code-review` | Diff/Branch | Review Comments | "Review PR login fix xem có lỗi gì không" |
+| `/code-review-and-implementation-flow`| Diff/Req | Review & Implement | "Review code và sửa luôn" |
 | `/project-review` | Codebase | Audit Report | "Đánh giá lại toàn bộ kiến trúc và bảo mật" |
+| `/review-project` | Codebase | (Global) Audit tổng thể dự án. | "Check quality trước release" |
 | `/review-docs` | Artifacts/Docs | Review Report | "Review logic plan này", "Check grammar file manual" |
 
 ---
