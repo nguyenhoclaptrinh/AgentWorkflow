@@ -13,8 +13,9 @@ description: Always apply when creating, organizing, reading or modifying docume
 1. **MUST** save all documents to `docs/` folder - NEVER create documents in project root or other folders
 2. **MUST** use Dewey Decimal folder structure (010, 020, 030, etc.)
 3. **MUST** include YAML frontmatter in every document
-4. **MUST** update relevant MOC file after creating a new document
-5. **MUST** use wiki-links `[[Document-Name]]` for cross-references
+4. **MUST** use **Vietnamese** language for all content (except code/technical terms)
+5. **MUST** update relevant MOC file after creating a new document
+6. **MUST** use wiki-links `[[Document-Name]]` for cross-references
 6. **MUST NOT** create custom folder structures like `01-product/`, `02-analysis/`
 7. **MUST NOT** create documents without checking Document Type Mapping first
 
